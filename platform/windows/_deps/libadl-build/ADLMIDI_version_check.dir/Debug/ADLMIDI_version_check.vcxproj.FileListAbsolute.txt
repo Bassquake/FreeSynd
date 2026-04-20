@@ -1,0 +1,1 @@
+K:\Coding\FreeSynd\platform\windows\_deps\libadl-build\ADLMIDI_version_check.dir\Debug\ADLMIDI_version_check.lib

@@ -1,0 +1,65 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2006  Tarjei Knapstad <tarjei.knapstad@gmail.com>
+ *   Copyright (C) 2010  Bohdan Stelmakh <chamel@users.sourceforge.net>
+ *   Copyright (C) 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#ifndef PEDMANAGER_H
+#define PEDMANAGER_H
+
+#include <vector>
+
+#include "fs-utils/common.h"
+#include "fs-kernel/model/ped.h"
+#include "fs-kernel/model/leveldata.h"
+
+namespace fs_knl {
+/*!
+ * Pedestrians manager class.
+ */
+class PedManager {
+public:
+    PedManager() {}
+    virtual ~PedManager() {}
+
+    PedInstance *loadInstance(const LevelData::People & ped_data, uint16_t ped_idx, Map *pMap, uint32_t playerGroupId);
+protected:
+    //! Return the pedtype from the value in data    
+    PedInstance::PedType getTypeFromValue(uint8_t value);
+    //! Get default max speed for a given type of Ped
+    int getDefaultSpeed(PedInstance::PedType type);
+    //! Initialize the ped instance as our agent
+    void initOurAgent(Agent *p_agent, unsigned int obj_group_id, PedInstance *pPed);
+    //! Initialize the ped instance as an enemy agent
+    void initEnemyAgent(PedInstance *pPed);
+    //! Initialize the ped instance as a guard
+    void initGuard(PedInstance *pPed);
+    //! Initialize the ped instance as a police
+    void initPolice(PedInstance *pPed);
+    //! Initialize the ped instance as a civilian
+    void initCivilian(PedInstance *pPed);
+    //! Initialize the ped instance as a criminal
+    void initCriminal(PedInstance *pPed);
+};
+
+}
+#endif

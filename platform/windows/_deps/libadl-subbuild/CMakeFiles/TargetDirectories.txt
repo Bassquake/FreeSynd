@@ -1,0 +1,3 @@
+K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/libadl-populate.dir
+K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/ALL_BUILD.dir
+K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/ZERO_CHECK.dir

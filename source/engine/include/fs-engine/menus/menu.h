@@ -1,0 +1,248 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2006  Tarjei Knapstad <tarjei.knapstad@gmail.com>
+ *   Copyright (C) 2010, 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#ifndef MENU_H
+#define MENU_H
+
+#include <string>
+#include <list>
+#include <map>
+#include <memory>
+
+#include "fs-utils/common.h"
+#include "fs-engine/io/keys.h"
+#include "fs-engine/menus/widget.h"
+#include "fs-engine/gfx/dirtylist.h"
+
+namespace fs_eng {
+
+class MenuManager;
+
+/*!
+ * Menu class.
+ */
+class Menu {
+public:
+
+    /*!
+     * These are the different types of cursor.
+     * Each Menu says what cursor to display when showed at first.
+     */
+    enum CursorType {
+        //! Don't show any cursor
+        kNoCursor,
+        //! Show the menu cursor
+        kMenuCursor,
+        //! Show the game cursor
+        kGameplayCursor
+    };
+    //! Used to point to no menu
+    static const int kMenuIdNoMenu;
+    //! Id of the LogOut Menu
+    static const int kMenuIdLogout;
+    //! Id of the Fli transition menu
+    static const int kMenuIdFliTransition;
+    /*! Id of the mouse left button.*/
+    static const int kMouseLeftButton;
+    /*! Id of the mouse middle button (scroll wheel press).*/
+    static const int kMouseMiddleButton;
+    /*! State bitmask for the middle button (matches SDL_BUTTON_MMASK).*/
+    static const int kMouseMiddleButtonMask;
+    /*! Id of the mouse right button.*/
+    static const int kMouseRightButton;
+
+    /**
+     * Menu constructor.
+     * \param menuManager
+     * \param id Id for this Menu
+     * \param parentId Used when the user press escape to return to previous menu
+     * \param needsBackground True means a snapshot of the background is made before showing the menu
+     *
+     */
+    Menu(MenuManager *menuManager, int id, int parentId, bool needsBackground = false);
+    virtual ~Menu();
+
+    int getId() { return id_; }
+
+    //! Returns true is Menu can be put in cache
+    bool isCachable() { return isCachable_; }
+    //! Return the cursor to use when shown
+    CursorType cursorWhenShown() { return cursorOnShow_; }
+
+    //! Returns the sprites used in menus
+    SpriteManager &menuSprites();
+
+    //! Creates a new text label and returns its id
+    int addStatic(int x, int y, const char *text, FontManager::EFontSize size, bool highlighted);
+    //! Creates a new text label with a fixed size and returns its id
+    int addStatic(int x, int y, int width, const char *text, FontManager::EFontSize size, bool highlighted);
+    //! Creates a new button and returns its id
+    int addOption(int x, int y, int width, int height, const char *text, FontManager::EFontSize size,
+            int to = -1, bool visible = true, bool centered = true, int dark_widget = 0, int light_widget = 0);
+    //! Creates a new button that has no text but an image
+    int addImageOption(int x, int y, int dark_widget, int light_widget, bool visible = true);
+    //! Creates a new toggle button and returns its id
+    int addToggleAction(int x, int y, int width, int height, const char *text, FontManager::EFontSize size, bool selected);
+    //! Creates a new list box and returns a pointer on it
+    ListBox * addListBox(int x, int y, int width, int height, bool visible = true);
+    //! Creates a specific list box for team selection and returns a pointer on it
+    TeamListBox * addTeamListBox(int x, int y, int width, int height, bool visible = true);
+    //! Creates a new textfield widget and returns a pointer on it
+    TextField * addTextField(int x, int y, int width, int height, FontManager::EFontSize size, int maxSize, bool displayEmpty = false, bool visible = false);
+
+    //! Returns the MenuText with given id
+    MenuText * getStatic(int staticId);
+    //! Returns the ActionWidget with the given id
+    ActionWidget * getActionWidget(int buttonId);
+    //! Returns the Option with the given id
+    Option * getOption(int buttonId);
+    //! Adds a mapping between a Key and an Option
+    void registerHotKey(FS_KeyCode key, int optId);
+
+    //! Does common actions before leaving
+    void leave();
+
+    /*!
+     * Called just after the opening animation is played (if one has
+     * been defined) and before the menu is rendered for the first time.
+     * @return False if there was a problem. In this case, the menu will be destroyed
+     * and LogoutMenu will be displayed to quit properly.
+     */
+    virtual bool handleBeforeShow() { return true; }
+
+    //! Main render function
+    void render();
+
+    //! Callback function : Children can re-implement
+    /*!
+     * Called just before the closing animation is played (if one has
+     * been defined) and the menu closed.
+     */
+    virtual void handleLeave() {}
+
+    //! Return whether this menu needs a background snapshot
+    bool doNeedBackground() { return needBackground_; }
+
+    //! Handles key pressed
+    void keyEvent(FS_Key key);
+    //! Handles key released (modifier keys only)
+    void keyUpEvent(FS_Key key);
+    //! Handles mouse moved
+    void mouseMotionEvent(Point2D point, uint32_t state);
+    //! Handles mouse button pressed
+    void mouseDownEvent(Point2D point, int button);
+    //! Handles mouse button released
+    void mouseUpEvent(Point2D point, int button);
+
+    virtual bool handleTick([[maybe_unused]] uint32_t elapsed) { return true; }
+
+    //! A structure to hold infos on the action to handle
+    struct ActionDesc {
+        //! Id of the action
+        int id;
+        //! A pointer to a context specific to the action
+        void *ctx;
+    };
+
+    /*!
+     * Called when an action widget has been activated.
+     * Callback function : Childs can reimplement
+     * \param action Infos on the action that was activated.
+     */
+    virtual void handleAction([[maybe_unused]] const ActionDesc &action) {}
+
+    void selectToggleAction(int id) { group_.selectButton(id); }
+
+    void captureInputBy(TextField *pTextfield);
+    bool isPaused() { return paused_; }
+
+    MenuManager *getMenuManager() { return menu_manager_; }
+
+protected:
+
+    //! Callback function : Children can re-implement
+    /*!
+        * Called each time a menu is rendered.
+        */
+    virtual void handleRender() {}
+
+    //! Handle mouse down event.
+    /*!
+        * \return true if the menu has processed the event, and it must not be processed anymore.
+        */
+    virtual bool handleMouseDown([[maybe_unused]] Point2D point, [[maybe_unused]] int button) { return false; }
+    virtual void handleMouseUp([[maybe_unused]] Point2D point, [[maybe_unused]] int button) {}
+    virtual void handleMouseMotion([[maybe_unused]] Point2D point, [[maybe_unused]] uint32_t state) {}
+    //! Handle key that where pressed but not assigned to any actions
+    virtual bool handleUnMappedKey([[maybe_unused]] const FS_Key key) { return false;}
+    //! Handle modifier key released (e.g. Ctrl released stops panning)
+    virtual void handleKeyUp([[maybe_unused]] const FS_Key key) {}
+
+    //! Convenient method to return the menu font with the given size
+    MenuFont * getMenuFont(FontManager::EFontSize size);
+    //! Convenient method to return the game font
+    GameFont *gameFont();
+    //! Convenient method to get messages
+    std::string getMessage(const std::string & id);
+    //! Convenient method to get messages
+    void getMessage(const std::string & id, std::string & msg);
+
+protected:
+
+    MenuManager *menu_manager_;
+    /*! A unique id to identify this menu.*/
+    int id_;
+    /*! Parent menu when leaving this menu.*/
+    int parentId_;
+    /*! The list of all static widgets (MenuText).*/
+    std::list<MenuText> statics_;
+    /*! The list of all dynamic widgets (Option).*/
+    std::list<std::unique_ptr<ActionWidget>> actions_;
+    /*! An association between key and option for hotkeys.*/
+    std::map<FS_KeyCode, int> hotKeys_;
+    /*! A group of mutual exclusive ToggleAction.*/
+    Group group_;
+    /*! The id of the widget that currently has focus.*/
+    int focusedWgId_;
+    /*! The current textfield that holds the cursor and so capture all key events.*/
+    TextField *pCaptureInput_;
+    /*! Tells if the menu is kept in cache even after leaving it or destroy it.*/
+    bool isCachable_;
+    /*! Used only in gameplay menu, pauses game*/
+    bool paused_;
+    //! What type of cursor to show at first
+    CursorType cursorOnShow_;
+
+private:
+    /*!
+     * This flag tells whether this menu needs to save a snapshot of the background
+     * for recover from some animation problems. False by default.
+     * Snapshot will be taken once when the menu is shown.
+     */
+    bool needBackground_;
+};
+
+}
+
+#endif

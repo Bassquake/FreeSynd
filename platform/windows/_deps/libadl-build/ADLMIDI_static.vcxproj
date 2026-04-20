@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A840D9A6-F5CC-3151-BC34-8BBADD5FBB8A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ADLMIDI_static</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">K:\Coding\FreeSynd\platform\windows\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ADLMIDI_static.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ADLMIDI</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">K:\Coding\FreeSynd\platform\windows\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ADLMIDI_static.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ADLMIDI</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">K:\Coding\FreeSynd\platform\windows\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ADLMIDI_static.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ADLMIDI</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">K:\Coding\FreeSynd\platform\windows\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ADLMIDI_static.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ADLMIDI</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;ENABLE_END_SILENCE_SKIPPING;BWMIDI_DISABLE_MUS_SUPPORT;ADLMIDI_DISABLE_JAVA_EMULATOR;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;ENABLE_END_SILENCE_SKIPPING;BWMIDI_DISABLE_MUS_SUPPORT;ADLMIDI_DISABLE_JAVA_EMULATOR;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENABLE_END_SILENCE_SKIPPING;BWMIDI_DISABLE_MUS_SUPPORT;ADLMIDI_DISABLE_JAVA_EMULATOR;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENABLE_END_SILENCE_SKIPPING;BWMIDI_DISABLE_MUS_SUPPORT;ADLMIDI_DISABLE_JAVA_EMULATOR;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENABLE_END_SILENCE_SKIPPING;BWMIDI_DISABLE_MUS_SUPPORT;ADLMIDI_DISABLE_JAVA_EMULATOR;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENABLE_END_SILENCE_SKIPPING;BWMIDI_DISABLE_MUS_SUPPORT;ADLMIDI_DISABLE_JAVA_EMULATOR;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENABLE_END_SILENCE_SKIPPING;BWMIDI_DISABLE_MUS_SUPPORT;ADLMIDI_DISABLE_JAVA_EMULATOR;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENABLE_END_SILENCE_SKIPPING;BWMIDI_DISABLE_MUS_SUPPORT;ADLMIDI_DISABLE_JAVA_EMULATOR;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule K:/Coding/FreeSynd/platform/windows/_deps/libadl-src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SK:/Coding/FreeSynd/source -BK:/Coding/FreeSynd/platform/windows --check-stamp-file K:/Coding/FreeSynd/platform/windows/_deps/libadl-build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\WriteBasicConfigVersionFile.cmake;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\cmake\checks\cpp14.cpp;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\libADLMIDI.pc.in;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\libADLMIDIConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">K:\Coding\FreeSynd\platform\windows\_deps\libadl-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule K:/Coding/FreeSynd/platform/windows/_deps/libadl-src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SK:/Coding/FreeSynd/source -BK:/Coding/FreeSynd/platform/windows --check-stamp-file K:/Coding/FreeSynd/platform/windows/_deps/libadl-build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\WriteBasicConfigVersionFile.cmake;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\cmake\checks\cpp14.cpp;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\libADLMIDI.pc.in;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\libADLMIDIConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">K:\Coding\FreeSynd\platform\windows\_deps\libadl-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule K:/Coding/FreeSynd/platform/windows/_deps/libadl-src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SK:/Coding/FreeSynd/source -BK:/Coding/FreeSynd/platform/windows --check-stamp-file K:/Coding/FreeSynd/platform/windows/_deps/libadl-build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\WriteBasicConfigVersionFile.cmake;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\cmake\checks\cpp14.cpp;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\libADLMIDI.pc.in;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\libADLMIDIConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">K:\Coding\FreeSynd\platform\windows\_deps\libadl-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule K:/Coding/FreeSynd/platform/windows/_deps/libadl-src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SK:/Coding/FreeSynd/source -BK:/Coding/FreeSynd/platform/windows --check-stamp-file K:/Coding/FreeSynd/platform/windows/_deps/libadl-build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCXXCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\GNUInstallDirs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckCompilerFlag.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckFlagCommonConfig.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\WriteBasicConfigVersionFile.cmake;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\cmake\checks\cpp14.cpp;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\libADLMIDI.pc.in;K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\libADLMIDIConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">K:\Coding\FreeSynd\platform\windows\_deps\libadl-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_load.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_midiplay.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_opl3.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_private.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\wopl\wopl_file.c" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\include\adlmidi.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_bankmap.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_cvt.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_db.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_midiplay.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_opl3.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_private.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_ptr.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\common\mutex.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\common\ptr.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\dos_hw_opl.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\dosbox\dbopl.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\dosbox_opl3.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\esfmu_opl3.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\java\JavaOPL3.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\java_opl3.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\mame_opl2.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\nuked\nukedopl3.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\nuked\nukedopl3_174.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\nuked_opl3.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\nuked_opl3_v174.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\opal\opal.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\opal_opl3.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\opl_chip_base.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\opl_serial_misc.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\opl_serial_port.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ym3812_lle.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymf262_lle.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm_opl2.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm_opl3.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\cvt_mus2mid.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\cvt_xmi2mid.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\file_reader.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\fraction.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\midi_sequencer.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\midi_sequencer.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\midi_sequencer_impl.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\oplinst.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\structures\pl_list.hpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\wopl\wopl_file.h" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\adlmidi_sequencer.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\dosbox_opl3.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\dosbox\dbopl.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\nuked_opl3.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\nuked\nukedopl3.c" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\nuked_opl3_v174.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\nuked\nukedopl3_174.c" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\opal_opl3.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\opal\opal.c" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\esfmu_opl3.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\esfmu\esfm.c" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\esfmu\esfm_registers.c" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\esfmu\esfm.h" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\mame_opl2.cpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\mame\opl.h" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\mame\mame_fmopl.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm_opl2.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm_opl3.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_adpcm.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_adpcm.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_fm.h" />
+    <None Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_fm.ipp">
+    </None>
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_misc.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_misc.h" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_opl.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_opl.h" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_pcm.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_pcm.h" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_ssg.cpp">
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">stdcpp14</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ClInclude Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\ymfm\ymfm_ssg.h" />
+    <ClCompile Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\inst_db.cpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="K:\Coding\FreeSynd\platform\windows\ZERO_CHECK.vcxproj">
+      <Project>{3284CCDF-EB85-3DC9-8706-F36A5A6D5053}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

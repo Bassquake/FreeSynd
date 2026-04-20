@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{096EBBFE-60BC-3B32-BD0E-92F8A43FC98E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>fs_engine</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">K:\Coding\FreeSynd\platform\windows\engine\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">fs_engine.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">fs_engine</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">K:\Coding\FreeSynd\platform\windows\engine\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">fs_engine.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">fs_engine</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">K:\Coding\FreeSynd\platform\windows\engine\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">fs_engine.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">fs_engine</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">K:\Coding\FreeSynd\platform\windows\engine\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">fs_engine.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">fs_engine</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "K:/Coding/FreeSynd/source/includes/libpng/include" /external:I "K:/Coding/FreeSynd/source/includes/zlib" /external:I "K:/Coding/FreeSynd/source/engine/../includes/CLI" /external:I "K:/Coding/FreeSynd/source/engine/../includes/utf8cpp" /external:I "K:/Coding/FreeSynd/source/extern/sdl2/include" /external:I "K:/Coding/FreeSynd/source/extern/SDL2_image/include" /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_DEBUG;SYSTEM_SDL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;SYSTEM_SDL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;K:\Coding\FreeSynd\source\includes\libpng\include;K:\Coding\FreeSynd\source\includes\zlib;K:\Coding\FreeSynd\source\engine\..\includes\CLI;K:\Coding\FreeSynd\source\engine\..\includes\utf8cpp;K:\Coding\FreeSynd\source\extern\sdl2\include;K:\Coding\FreeSynd\source\extern\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;K:\Coding\FreeSynd\source\includes\libpng\include;K:\Coding\FreeSynd\source\includes\zlib;K:\Coding\FreeSynd\source\engine\..\includes\CLI;K:\Coding\FreeSynd\source\engine\..\includes\utf8cpp;K:\Coding\FreeSynd\source\extern\sdl2\include;K:\Coding\FreeSynd\source\extern\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "K:/Coding/FreeSynd/source/includes/libpng/include" /external:I "K:/Coding/FreeSynd/source/includes/zlib" /external:I "K:/Coding/FreeSynd/source/engine/../includes/CLI" /external:I "K:/Coding/FreeSynd/source/engine/../includes/utf8cpp" /external:I "K:/Coding/FreeSynd/source/extern/sdl2/include" /external:I "K:/Coding/FreeSynd/source/extern/SDL2_image/include" /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SYSTEM_SDL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SYSTEM_SDL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;K:\Coding\FreeSynd\source\includes\libpng\include;K:\Coding\FreeSynd\source\includes\zlib;K:\Coding\FreeSynd\source\engine\..\includes\CLI;K:\Coding\FreeSynd\source\engine\..\includes\utf8cpp;K:\Coding\FreeSynd\source\extern\sdl2\include;K:\Coding\FreeSynd\source\extern\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;K:\Coding\FreeSynd\source\includes\libpng\include;K:\Coding\FreeSynd\source\includes\zlib;K:\Coding\FreeSynd\source\engine\..\includes\CLI;K:\Coding\FreeSynd\source\engine\..\includes\utf8cpp;K:\Coding\FreeSynd\source\extern\sdl2\include;K:\Coding\FreeSynd\source\extern\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "K:/Coding/FreeSynd/source/includes/libpng/include" /external:I "K:/Coding/FreeSynd/source/includes/zlib" /external:I "K:/Coding/FreeSynd/source/engine/../includes/CLI" /external:I "K:/Coding/FreeSynd/source/engine/../includes/utf8cpp" /external:I "K:/Coding/FreeSynd/source/extern/sdl2/include" /external:I "K:/Coding/FreeSynd/source/extern/SDL2_image/include" /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SYSTEM_SDL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SYSTEM_SDL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;K:\Coding\FreeSynd\source\includes\libpng\include;K:\Coding\FreeSynd\source\includes\zlib;K:\Coding\FreeSynd\source\engine\..\includes\CLI;K:\Coding\FreeSynd\source\engine\..\includes\utf8cpp;K:\Coding\FreeSynd\source\extern\sdl2\include;K:\Coding\FreeSynd\source\extern\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;K:\Coding\FreeSynd\source\includes\libpng\include;K:\Coding\FreeSynd\source\includes\zlib;K:\Coding\FreeSynd\source\engine\..\includes\CLI;K:\Coding\FreeSynd\source\engine\..\includes\utf8cpp;K:\Coding\FreeSynd\source\extern\sdl2\include;K:\Coding\FreeSynd\source\extern\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "K:/Coding/FreeSynd/source/includes/libpng/include" /external:I "K:/Coding/FreeSynd/source/includes/zlib" /external:I "K:/Coding/FreeSynd/source/engine/../includes/CLI" /external:I "K:/Coding/FreeSynd/source/engine/../includes/utf8cpp" /external:I "K:/Coding/FreeSynd/source/extern/sdl2/include" /external:I "K:/Coding/FreeSynd/source/extern/SDL2_image/include" /w14242 /w14254 /w14263 /w14265 /w14287 /w14296 /w14311 /w14545 /w14546 /w14547 /w14549 /w14555 /w14619 /w14640 /w14826 /w14905 /w14906 /w14928</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatSpecificWarningsAsErrors>4289</TreatSpecificWarningsAsErrors>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SYSTEM_SDL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;SYSTEM_SDL;_CONSOLE;_CRT_SECURE_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;K:\Coding\FreeSynd\source\includes\libpng\include;K:\Coding\FreeSynd\source\includes\zlib;K:\Coding\FreeSynd\source\engine\..\includes\CLI;K:\Coding\FreeSynd\source\engine\..\includes\utf8cpp;K:\Coding\FreeSynd\source\extern\sdl2\include;K:\Coding\FreeSynd\source\extern\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>K:\Coding\FreeSynd\source\includes;K:\Coding\FreeSynd\source\engine\include;K:\Coding\FreeSynd\source\utils\include;K:\Coding\FreeSynd\source\engine\src\system;K:\Coding\FreeSynd\source\engine\src\sound;K:\Coding\FreeSynd\source\includes\libpng\include;K:\Coding\FreeSynd\source\includes\zlib;K:\Coding\FreeSynd\source\engine\..\includes\CLI;K:\Coding\FreeSynd\source\engine\..\includes\utf8cpp;K:\Coding\FreeSynd\source\extern\sdl2\include;K:\Coding\FreeSynd\source\extern\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="K:\Coding\FreeSynd\source\engine\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule K:/Coding/FreeSynd/source/engine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SK:/Coding/FreeSynd/source -BK:/Coding/FreeSynd/platform/windows --check-stamp-file K:/Coding/FreeSynd/platform/windows/engine/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\SelectLibraryConfigurations.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2_image.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2_mixer.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">K:\Coding\FreeSynd\platform\windows\engine\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule K:/Coding/FreeSynd/source/engine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SK:/Coding/FreeSynd/source -BK:/Coding/FreeSynd/platform/windows --check-stamp-file K:/Coding/FreeSynd/platform/windows/engine/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\SelectLibraryConfigurations.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2_image.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2_mixer.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">K:\Coding\FreeSynd\platform\windows\engine\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule K:/Coding/FreeSynd/source/engine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SK:/Coding/FreeSynd/source -BK:/Coding/FreeSynd/platform/windows --check-stamp-file K:/Coding/FreeSynd/platform/windows/engine/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\SelectLibraryConfigurations.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2_image.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2_mixer.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">K:\Coding\FreeSynd\platform\windows\engine\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule K:/Coding/FreeSynd/source/engine/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SK:/Coding/FreeSynd/source -BK:/Coding/FreeSynd/platform/windows --check-stamp-file K:/Coding/FreeSynd/platform/windows/engine/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.0\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPNG.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\FindZLIB.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.0\Modules\SelectLibraryConfigurations.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2_image.cmake;K:\Coding\FreeSynd\source\cmake\FindSDL2_mixer.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">K:\Coding\FreeSynd\platform\windows\engine\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\base_app.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\appcontext.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\system\system.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\dirtylist.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\fontmanager.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\sprite.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\spritemanager.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\animationloader.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\animationmanager.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\animationplayer.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\logomanager.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\tile.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\tilemanager.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\sound\audio.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\sound\musicmanager.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\sound\soundmanager.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\menu.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\menumanager.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\fliplayer.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\flimenu.cpp" />
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\logoutmenu.cpp" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\enginecommon.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\base_app.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\appcontext.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\config.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\system\system.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\cp437.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\dirtylist.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\font.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\fontmanager.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\logomanager.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\sprite.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\spritemanager.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\animationloader.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\animationmanager.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\tile.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\tilemanager.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\fstexture.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\animationplayer.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\sound\audio.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\sound\musicmanager.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\sound\sound.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\sound\soundmanager.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\io\keys.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\io\resources.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\menu.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\menumanager.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\widget.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\fliplayer.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\flimenu.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\logoutmenu.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h" />
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\events\default_events.h" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="K:\Coding\FreeSynd\platform\windows\ZERO_CHECK.vcxproj">
+      <Project>{3284CCDF-EB85-3DC9-8706-F36A5A6D5053}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-build\ADLMIDI_static.vcxproj">
+      <Project>{A840D9A6-F5CC-3151-BC34-8BBADD5FBB8A}</Project>
+      <Name>ADLMIDI_static</Name>
+    </ProjectReference>
+    <ProjectReference Include="K:\Coding\FreeSynd\platform\windows\engine\fs_engine_sdl.vcxproj">
+      <Project>{61F71E56-A958-3701-B98B-A3CBB631BF2F}</Project>
+      <Name>fs_engine_sdl</Name>
+    </ProjectReference>
+    <ProjectReference Include="K:\Coding\FreeSynd\platform\windows\engine\fs_engine_sdlmixer.vcxproj">
+      <Project>{102AEFE7-8A58-3E45-AC7A-84D1CFD31A32}</Project>
+      <Name>fs_engine_sdlmixer</Name>
+    </ProjectReference>
+    <ProjectReference Include="K:\Coding\FreeSynd\platform\windows\utils\fs_utils.vcxproj">
+      <Project>{FEDBA022-3139-35BA-AF32-EB6FE098839B}</Project>
+      <Name>fs_utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

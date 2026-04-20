@@ -1,0 +1,109 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2006  Tarjei Knapstad <tarjei.knapstad@gmail.com>
+ *   Copyright (C) 2010, 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#ifndef MUSICMANAGER_H
+#define MUSICMANAGER_H
+
+#include <vector>
+#include <memory>
+
+#include "fs-utils/common.h"
+#include "fs-utils/misc/singleton.h"
+#include "fs-engine/sound/audio.h"
+
+namespace fs_eng {
+
+/*!
+* Music manager class.
+*/
+class MusicManager : public Singleton < MusicManager > {
+public:
+
+    /*!
+     * The different files used for music
+     */
+    enum MusicFile {
+        kMusicFileIntro,
+        kMusicFileGame,
+        kMusicFileNoFile
+    };
+
+    /*!
+     * This is the list of tracks throughout the game.
+     */
+    enum MusicSong {
+        kMusicSongIntro,
+        kMusicSongAssassinate,
+        kMusicSongDanger,
+        kMusicSongGameCompleted,
+        kMusicSongMissionFailed,
+        kMusicSongMissionCompleted,
+        kMusicSongNoSong = -1
+    };
+
+    MusicManager();
+    ~MusicManager();
+
+    void initialize(bool disabled, Audio* audio);
+
+    //! Plays the given song with possibility to loop
+    void playSong(MusicSong song, bool loopForEver = false);
+    //! Stop playing the current song
+    void stopCurrentSong();
+    //! Pause the current song
+    void pause();
+    //! Resume the song
+    void resume();
+
+    //! Sets the music volume to the given level
+    void setVolume(int volume);
+    //! Returns the current volume
+    int getVolume();
+    //! Increase volume with the given percentage (0-100)
+    int increaseVolume(int percentage = 10);
+    //! Decrease volume with the given percentage (0-100)
+    int decreaseVolume(int percentage = 10);
+    //! Mute / unmute the music
+    void toggleMusic();
+
+protected:
+    bool isAudioInitialized();
+
+protected:
+    //! store the current loaded file
+    MusicFile currentFile_;
+    /*!
+    * Saves the volume level before a mute so
+    * we can restore it after a unmute.
+    */
+    int volumeBeforeMute_;
+    bool disabled_;
+    Audio* audio_;
+};
+
+};
+
+#define g_MusicMgr   fs_eng::MusicManager::singleton()
+
+#endif

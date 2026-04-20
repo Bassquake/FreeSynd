@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\sound\mixer\sdlmixeraudio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\sound\mixer\sdlmixersound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\src\sound\mixer\sdlmixeraudio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\src\sound\mixer\sdlmixersound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="K:\Coding\FreeSynd\source\engine\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{63D132B3-0917-3C8B-9E6B-A8B8F513A6A9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{EB46514E-2F7B-3C18-AF9F-94D9F7B9D6F9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,368 @@
+﻿  Building Custom Rule K:/Coding/FreeSynd/source/engine/CMakeLists.txt
+  base_app.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/base_app.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/engine/src/base_app.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\engine\src\base_app.cpp(150,23):
+          see reference to function template instantiation 'ListenerHandle EventManager::listen<QuitEvent,fs_eng::BaseApp,void(__cdecl fs_eng::BaseApp::* )(QuitEvent *)>(T_Instance *,T_Function)' being compiled
+          with
+          [
+              T_Instance=fs_eng::BaseApp,
+              T_Function=void (__cdecl fs_eng::BaseApp::* )(QuitEvent *)
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(135,86):
+          see reference to function template instantiation 'ListenerHandle CallbackContainer<QuitEvent>::add_callback<EventManager::listen::<lambda_1>>(T_Function)' being compiled
+          with
+          [
+              T_Function=EventManager::listen::<lambda_1>
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(177,16):
+          see reference to function template instantiation 'ListenerHandle &std::vector<ListenerHandle,std::allocator<ListenerHandle>>::emplace_back<size_t&,size_t&,unsigned int,EventID&>(size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(924,24):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<size_t&,size_t&,unsigned int,EventID&>(size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(845,20):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<size_t&,size_t&,unsigned int,EventID&>(size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,EventID&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,EventID&>(_Ty *const ,size_t &,size_t &,unsigned int &&,EventID &) noexcept(<expr>)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/engine/src/base_app.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90):
+      the template instantiation context (the oldest one first) is
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,EventID&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,EventID&>(_Ty *const ,size_t &,size_t &,unsigned int &&,EventID &) noexcept(false)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+  appcontext.cpp
+K:\Coding\FreeSynd\source\engine\src\appcontext.cpp(134,9): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::filesystem::path::value_type *'
+      K:\Coding\FreeSynd\source\engine\src\appcontext.cpp(134,9):
+      consider using '%ls' in the format string
+      K:\Coding\FreeSynd\source\engine\src\appcontext.cpp(134,9):
+      consider using '%lls' in the format string
+      K:\Coding\FreeSynd\source\engine\src\appcontext.cpp(134,9):
+      consider using '%Ls' in the format string
+      K:\Coding\FreeSynd\source\engine\src\appcontext.cpp(134,9):
+      consider using '%ws' in the format string
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/appcontext.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  system.cpp
+  dirtylist.cpp
+  font.cpp
+K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp(190,48): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp(194,44): warning C4101: 'exc': unreferenced local variable
+K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp(219,44): warning C4101: 'exc': unreferenced local variable
+K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp(329,48): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp(333,44): warning C4101: 'exc': unreferenced local variable
+K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp(394,48): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp(359,13): warning C4189: 'fromColor': local variable is initialized but not referenced
+K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp(398,44): warning C4101: 'exc': unreferenced local variable
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/gfx/font.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  fontmanager.cpp
+  sprite.cpp
+K:\Coding\FreeSynd\source\engine\src\gfx\sprite.cpp(178,9): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+K:\Coding\FreeSynd\source\engine\src\gfx\sprite.cpp(178,9): warning C4313: 'printf': '%s' in format string conflicts with argument 1 of type 'int'
+K:\Coding\FreeSynd\source\engine\src\gfx\sprite.cpp(218,62): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\sprite.cpp(232,62): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\sprite.cpp(296,61): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\sprite.cpp(310,61): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+  spritemanager.cpp
+K:\Coding\FreeSynd\source\engine\src\gfx\spritemanager.cpp(146,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\spritemanager.cpp(145,45): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\spritemanager.cpp(218,68): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\spritemanager.cpp(218,53): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\spritemanager.cpp(284,9): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+K:\Coding\FreeSynd\source\engine\src\gfx\spritemanager.cpp(284,9): warning C4313: 'printf': '%s' in format string conflicts with argument 1 of type 'int'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/gfx/spritemanager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  animationloader.cpp
+K:\Coding\FreeSynd\source\engine\src\gfx\animationloader.cpp(106,22): warning C4477: 'sscanf' : format string '%lu' requires an argument of type 'unsigned long *', but variadic argument 5 has type 'size_t *'
+      K:\Coding\FreeSynd\source\engine\src\gfx\animationloader.cpp(106,22):
+      consider using '%zu' in the format string
+  
+K:\Coding\FreeSynd\source\engine\src\gfx\animationloader.cpp(133,22): warning C4477: 'sscanf' : format string '%lu' requires an argument of type 'unsigned long *', but variadic argument 1 has type 'size_t *'
+      K:\Coding\FreeSynd\source\engine\src\gfx\animationloader.cpp(133,22):
+      consider using '%zu' in the format string
+  
+K:\Coding\FreeSynd\source\engine\src\gfx\animationloader.cpp(133,22): warning C4477: 'sscanf' : format string '%lu' requires an argument of type 'unsigned long *', but variadic argument 5 has type 'size_t *'
+      K:\Coding\FreeSynd\source\engine\src\gfx\animationloader.cpp(133,22):
+      consider using '%zu' in the format string
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/gfx/animationloader.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  animationmanager.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/gfx/animationmanager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  animationplayer.cpp
+  logomanager.cpp
+K:\Coding\FreeSynd\source\engine\src\gfx\logomanager.cpp(155,31): warning C4244: 'return': conversion from 'fs_eng::PaletteMenuColorIndex' to 'uint8_t', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\gfx\logomanager.cpp(173,9): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+K:\Coding\FreeSynd\source\engine\src\gfx\logomanager.cpp(173,9): warning C4313: 'printf': '%s' in format string conflicts with argument 1 of type 'int'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/gfx/logomanager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  tile.cpp
+K:\Coding\FreeSynd\source\engine\src\gfx\tile.cpp(108,16): warning C4244: 'return': conversion from 'fs_eng::Tile::EType' to 'uint8', possible loss of data
+  tilemanager.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/gfx/tilemanager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  audio.cpp
+  musicmanager.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/sound/musicmanager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  soundmanager.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/sound/soundmanager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  menu.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/menus/menu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  menumanager.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/menus/menumanager.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  widget.cpp
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(221,44): warning C4101: 'exc': unreferenced local variable
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(256,61): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(258,60): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(572,48): warning C4101: 'exc': unreferenced local variable
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(600,44): warning C4101: 'exc': unreferenced local variable
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(627,44): warning C4101: 'exc': unreferenced local variable
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(641,44): warning C4101: 'exc': unreferenced local variable
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(664,28): warning C4018: '<': signed/unsigned mismatch
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(718,48): warning C4101: 'exc': unreferenced local variable
+K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp(749,44): warning C4101: 'exc': unreferenced local variable
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/menus/widget.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  Generating Code...
+K:\Coding\FreeSynd\source\engine\src\gfx\tilemanager.cpp(253,1): warning C4702: unreachable code
+  Compiling...
+  fliplayer.cpp
+K:\Coding\FreeSynd\source\engine\src\menus\fliplayer.cpp(256,9): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+K:\Coding\FreeSynd\source\engine\src\menus\fliplayer.cpp(256,9): warning C4313: 'printf': '%s' in format string conflicts with argument 1 of type 'int'
+K:\Coding\FreeSynd\source\engine\src\menus\fliplayer.cpp(278,9): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+K:\Coding\FreeSynd\source\engine\src\menus\fliplayer.cpp(278,9): warning C4313: 'printf': '%s' in format string conflicts with argument 1 of type 'int'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/menus/fliplayer.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  flimenu.cpp
+K:\Coding\FreeSynd\source\engine\src\menus\flimenu.cpp(211,50): warning C4100: 'button': unreferenced parameter
+K:\Coding\FreeSynd\source\engine\src\menus\flimenu.cpp(211,39): warning C4100: 'point': unreferenced parameter
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/engine/src/menus/flimenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  logoutmenu.cpp
+  Generating Code...
+  fs_engine.vcxproj -> K:\Coding\FreeSynd\platform\windows\engine\Debug\fs_engine.lib

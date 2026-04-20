@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/libadl-populate"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/3ecb2769e95e1b805fa4c3b0ab8b8b97/libadl-populate.rule"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/123d3f87b5914d088e5271973ba411a7/libadl-populate-complete.rule"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/bf5af37ec29ca3d5ee4b3225db11ffa1/libadl-populate-build.rule"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/bf5af37ec29ca3d5ee4b3225db11ffa1/libadl-populate-configure.rule"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/bf5af37ec29ca3d5ee4b3225db11ffa1/libadl-populate-download.rule"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/bf5af37ec29ca3d5ee4b3225db11ffa1/libadl-populate-install.rule"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/bf5af37ec29ca3d5ee4b3225db11ffa1/libadl-populate-mkdir.rule"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/bf5af37ec29ca3d5ee4b3225db11ffa1/libadl-populate-patch.rule"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/bf5af37ec29ca3d5ee4b3225db11ffa1/libadl-populate-test.rule"
+		},
+		{
+			"file" : "K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/CMakeFiles/bf5af37ec29ca3d5ee4b3225db11ffa1/libadl-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"libadl-populate"
+		],
+		"name" : "libadl-populate"
+	}
+}

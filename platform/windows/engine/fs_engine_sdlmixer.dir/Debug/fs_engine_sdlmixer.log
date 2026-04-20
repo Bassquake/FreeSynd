@@ -1,0 +1,8 @@
+﻿  Building Custom Rule K:/Coding/FreeSynd/source/engine/CMakeLists.txt
+  sdlmixeraudio.cpp
+K:\Coding\FreeSynd\source\engine\src\sound\mixer\sdlmixeraudio.cpp(92,51): warning C4100: 'fmt': unreferenced parameter
+  sdlmixersound.cpp
+K:\Coding\FreeSynd\source\engine\src\sound\mixer\sdlmixersound.cpp(61,9): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'int'
+K:\Coding\FreeSynd\source\engine\src\sound\mixer\sdlmixersound.cpp(61,9): warning C4313: 'printf': '%s' in format string conflicts with argument 1 of type 'int'
+  Generating Code...
+  fs_engine_sdlmixer.vcxproj -> K:\Coding\FreeSynd\platform\windows\engine\Debug\fs_engine_sdlmixer.lib

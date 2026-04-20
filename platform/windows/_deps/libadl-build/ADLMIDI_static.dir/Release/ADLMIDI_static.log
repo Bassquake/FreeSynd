@@ -1,0 +1,37 @@
+﻿  Building Custom Rule K:/Coding/FreeSynd/platform/windows/_deps/libadl-src/CMakeLists.txt
+  adlmidi.cpp
+  adlmidi_load.cpp
+  adlmidi_midiplay.cpp
+  adlmidi_opl3.cpp
+  adlmidi_private.cpp
+  adlmidi_sequencer.cpp
+K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\midi_sequencer_impl.hpp(3537,11): warning C4551: function call missing argument list
+  (compiling source file '../libadl-src/src/adlmidi_sequencer.cpp')
+  
+  dosbox_opl3.cpp
+  dbopl.cpp
+  nuked_opl3.cpp
+  nuked_opl3_v174.cpp
+  opal_opl3.cpp
+  esfmu_opl3.cpp
+  mame_opl2.cpp
+  mame_fmopl.cpp
+  inst_db.cpp
+  wopl_file.c
+  nukedopl3.c
+  nukedopl3_174.c
+  opal.c
+  esfm.c
+K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\esfmu\esfm.c(1743,9): warning C4068: unknown pragma 'GCC'
+K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\esfmu\esfm.c(1744,9): warning C4068: unknown pragma 'GCC'
+K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\esfmu\esfm.c(1745,9): warning C4068: unknown pragma 'clang'
+K:\Coding\FreeSynd\platform\windows\_deps\libadl-src\src\chips\esfmu\esfm.c(1746,9): warning C4068: unknown pragma 'clang'
+  esfm_registers.c
+  ymfm_opl2.cpp
+  ymfm_opl3.cpp
+  ymfm_adpcm.cpp
+  ymfm_misc.cpp
+  ymfm_opl.cpp
+  ymfm_pcm.cpp
+  ymfm_ssg.cpp
+  ADLMIDI_static.vcxproj -> K:\Coding\FreeSynd\platform\windows\Release\ADLMIDI.lib

@@ -1,0 +1,16 @@
+{
+	"InstallScripts" : 
+	[
+		"K:/Coding/FreeSynd/platform/windows/cmake_install.cmake",
+		"K:/Coding/FreeSynd/platform/windows/docs/cmake_install.cmake",
+		"K:/Coding/FreeSynd/platform/windows/packaging/cmake_install.cmake",
+		"K:/Coding/FreeSynd/platform/windows/data/cmake_install.cmake",
+		"K:/Coding/FreeSynd/platform/windows/utils/cmake_install.cmake",
+		"K:/Coding/FreeSynd/platform/windows/engine/cmake_install.cmake",
+		"K:/Coding/FreeSynd/platform/windows/engine/extern/cmake_install.cmake",
+		"K:/Coding/FreeSynd/platform/windows/_deps/libadl-build/cmake_install.cmake",
+		"K:/Coding/FreeSynd/platform/windows/kernel/cmake_install.cmake",
+		"K:/Coding/FreeSynd/platform/windows/game/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

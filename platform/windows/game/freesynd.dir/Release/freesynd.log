@@ -1,0 +1,599 @@
+﻿  Building Custom Rule K:/Coding/FreeSynd/source/game/CMakeLists.txt
+  app.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/app.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  gamesession.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/core/gamesession.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  gamecontroller.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/core/gamecontroller.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  freesynd.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/freesynd.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  agentselectorrenderer.cpp
+K:\Coding\FreeSynd\source\game\menus\squadselection.h(143,39): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  (compiling source file '../../../source/game/menus/agentselectorrenderer.cpp')
+  
+K:\Coding\FreeSynd\source\game\menus\agentselectorrenderer.cpp(136,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\game\menus\agentselectorrenderer.cpp(137,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\game\menus\agentselectorrenderer.cpp(138,22): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\game\menus\agentselectorrenderer.cpp(180,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\game\menus\agentselectorrenderer.cpp(181,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+K:\Coding\FreeSynd\source\game\menus\agentselectorrenderer.cpp(182,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/agentselectorrenderer.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  maprenderer.cpp
+K:\Coding\FreeSynd\source\game\menus\squadselection.h(143,39): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  (compiling source file '../../../source/game/menus/maprenderer.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/maprenderer.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  minimaprenderer.cpp
+K:\Coding\FreeSynd\source\game\menus\minimaprenderer.cpp(203,52): warning C4244: '=': conversion from 'fs_eng::PaletteMenuColorIndex' to 'uint8_t', possible loss of data
+K:\Coding\FreeSynd\source\game\menus\minimaprenderer.cpp(207,56): warning C4244: '=': conversion from 'fs_eng::PaletteMenuColorIndex' to 'uint8_t', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/minimaprenderer.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/game/menus/minimaprenderer.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\game\menus\minimaprenderer.cpp(228,19):
+          see reference to function template instantiation 'ListenerHandle EventManager::listen<fs_knl::ObjectiveEndedEvent,GamePlayMinimapRenderer,void(__cdecl GamePlayMinimapRenderer::* )(fs_knl::ObjectiveEndedEvent *)>(T_Instance *,T_Function)' being compiled
+          with
+          [
+              T_Instance=GamePlayMinimapRenderer,
+              T_Function=void (__cdecl GamePlayMinimapRenderer::* )(fs_knl::ObjectiveEndedEvent *)
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(135,86):
+          see reference to function template instantiation 'ListenerHandle CallbackContainer<fs_knl::ObjectiveEndedEvent>::add_callback<EventManager::listen::<lambda_1>>(T_Function)' being compiled
+          with
+          [
+              T_Function=EventManager::listen::<lambda_1>
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(177,16):
+          see reference to function template instantiation 'ListenerHandle &std::vector<ListenerHandle,std::allocator<ListenerHandle>>::emplace_back<size_t&,size_t&,unsigned int,EventID&>(size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(924,24):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<size_t&,size_t&,unsigned int,uint32_t&>(size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(845,20):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<size_t&,size_t&,unsigned int,uint32_t&>(size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,uint32_t&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,uint32_t&>(_Ty *const ,size_t &,size_t &,unsigned int &&,uint32_t &) noexcept(<expr>)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/game/menus/minimaprenderer.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90):
+      the template instantiation context (the oldest one first) is
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,uint32_t&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,uint32_t&>(_Ty *const ,size_t &,size_t &,unsigned int &&,uint32_t &) noexcept(false)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+  briefmenu.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/briefmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  confmenu.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/confmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  debriefmenu.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/debriefmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/game/menus/debriefmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\game\menus\debriefmenu.cpp(108,54):
+          see reference to function template instantiation 'ListenerHandle EventManager::listen<fs_knl::ResearchEndEvent,DebriefMenu,void(__cdecl DebriefMenu::* )(fs_knl::ResearchEndEvent *)>(T_Instance *,T_Function)' being compiled
+          with
+          [
+              T_Instance=DebriefMenu,
+              T_Function=void (__cdecl DebriefMenu::* )(fs_knl::ResearchEndEvent *)
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(135,86):
+          see reference to function template instantiation 'ListenerHandle CallbackContainer<fs_knl::ResearchEndEvent>::add_callback<EventManager::listen::<lambda_1>>(T_Function)' being compiled
+          with
+          [
+              T_Function=EventManager::listen::<lambda_1>
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(177,16):
+          see reference to function template instantiation 'ListenerHandle &std::vector<ListenerHandle,std::allocator<ListenerHandle>>::emplace_back<size_t&,size_t&,unsigned int,EventID&>(size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(924,24):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<size_t&,size_t&,unsigned int,uint32_t&>(size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(845,20):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<size_t&,size_t&,unsigned int,uint32_t&>(size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,uint32_t&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,uint32_t&>(_Ty *const ,size_t &,size_t &,unsigned int &&,uint32_t &) noexcept(<expr>)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/game/menus/debriefmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90):
+      the template instantiation context (the oldest one first) is
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,uint32_t&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,uint32_t&>(_Ty *const ,size_t &,size_t &,unsigned int &&,uint32_t &) noexcept(false)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+  gameplaymenu.cpp
+K:\Coding\FreeSynd\source\game\menus\squadselection.h(143,39): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  (compiling source file '../../../source/game/menus/gameplaymenu.cpp')
+  
+K:\Coding\FreeSynd\source\game\menus\gameplaymenu.cpp(709,44): warning C4244: '=': conversion from 'IPAStim::IPAType' to 'int8_t', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/gameplaymenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/game/menus/gameplaymenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\game\menus\gameplaymenu.cpp(256,38):
+          see reference to function template instantiation 'ListenerHandle EventManager::listen<fs_knl::AgentDiedEvent,GameplayMenu,void(__cdecl GameplayMenu::* )(fs_knl::AgentDiedEvent *)>(T_Instance *,T_Function)' being compiled
+          with
+          [
+              T_Instance=GameplayMenu,
+              T_Function=void (__cdecl GameplayMenu::* )(fs_knl::AgentDiedEvent *)
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(135,86):
+          see reference to function template instantiation 'ListenerHandle CallbackContainer<fs_knl::AgentDiedEvent>::add_callback<EventManager::listen::<lambda_1>>(T_Function)' being compiled
+          with
+          [
+              T_Function=EventManager::listen::<lambda_1>
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(177,16):
+          see reference to function template instantiation 'ListenerHandle &std::vector<ListenerHandle,std::allocator<ListenerHandle>>::emplace_back<size_t&,size_t&,unsigned int,EventID&>(size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(924,24):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<size_t&,size_t&,unsigned int,uint32_t&>(size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(845,20):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<size_t&,size_t&,unsigned int,uint32_t&>(size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,uint32_t&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,uint32_t&>(_Ty *const ,size_t &,size_t &,unsigned int &&,uint32_t &) noexcept(<expr>)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/game/menus/gameplaymenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90):
+      the template instantiation context (the oldest one first) is
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,uint32_t&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,uint32_t &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,uint32_t&>(_Ty *const ,size_t &,size_t &,unsigned int &&,uint32_t &) noexcept(false)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+  loadingmenu.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/loadingmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  loadsavemenu.cpp
+K:\Coding\FreeSynd\source\game\menus\loadsavemenu.cpp(117,27): warning C4242: '=': conversion from 'int' to 'short', possible loss of data
+K:\Coding\FreeSynd\source\game\menus\loadsavemenu.cpp(114,55): warning C4100: 'button': unreferenced parameter
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/loadsavemenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  mainmenu.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/mainmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  mapmenu.cpp
+K:\Coding\FreeSynd\source\game\menus\mapmenu.cpp(415,54): warning C4242: 'argument': conversion from 'int' to 'uint8_t', possible loss of data
+K:\Coding\FreeSynd\source\game\menus\mapmenu.cpp(404,50): warning C4100: 'button': unreferenced parameter
+K:\Coding\FreeSynd\source\game\menus\mapmenu.cpp(460,46): warning C4242: 'argument': conversion from 'int' to 'uint8_t', possible loss of data
+K:\Coding\FreeSynd\source\game\menus\mapmenu.cpp(472,46): warning C4242: 'argument': conversion from 'int' to 'uint8_t', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/mapmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  gamemenufactory.cpp
+K:\Coding\FreeSynd\source\game\menus\squadselection.h(143,39): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  (compiling source file '../../../source/game/menus/gamemenufactory.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/gamemenufactory.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  researchmenu.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/researchmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/game/menus/researchmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(462,85):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\game\menus\researchmenu.cpp(88,40):
+          see reference to function template instantiation 'ListenerHandle EventManager::listen<fs_knl::ResearchEndEvent,ResearchMenu,void(__cdecl ResearchMenu::* )(fs_knl::ResearchEndEvent *)>(T_Instance *,T_Function)' being compiled
+          with
+          [
+              T_Instance=ResearchMenu,
+              T_Function=void (__cdecl ResearchMenu::* )(fs_knl::ResearchEndEvent *)
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(135,86):
+          see reference to function template instantiation 'ListenerHandle CallbackContainer<fs_knl::ResearchEndEvent>::add_callback<EventManager::listen::<lambda_1>>(T_Function)' being compiled
+          with
+          [
+              T_Function=EventManager::listen::<lambda_1>
+          ]
+          K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h(177,16):
+          see reference to function template instantiation 'ListenerHandle &std::vector<ListenerHandle,std::allocator<ListenerHandle>>::emplace_back<size_t&,size_t&,unsigned int,EventID&>(size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(924,24):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_one_at_back<size_t&,size_t&,unsigned int,EventID&>(size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(845,20):
+          see reference to function template instantiation '_Ty &std::vector<_Ty,std::allocator<_Ty>>::_Emplace_back_with_unused_capacity<size_t&,size_t&,unsigned int,EventID&>(size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          with
+          [
+              _Ty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,EventID&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,EventID&>(_Ty *const ,size_t &,size_t &,unsigned int &&,EventID &) noexcept(<expr>)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+  (compiling source file '../../../source/game/menus/researchmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xutility(463,90):
+      the template instantiation context (the oldest one first) is
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\vector(863,27):
+          see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,size_t&,size_t&,unsigned int,EventID&>(_Alloc &,_Objty *const ,size_t &,size_t &,unsigned int &&,EventID &)' being compiled
+          with
+          [
+              _Alloc=std::allocator<ListenerHandle>,
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+          C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xmemory(730,14):
+          see reference to function template instantiation '_Ty *std::construct_at<_Objty,size_t&,size_t&,unsigned int,EventID&>(_Ty *const ,size_t &,size_t &,unsigned int &&,EventID &) noexcept(false)' being compiled
+          with
+          [
+              _Ty=ListenerHandle,
+              _Objty=ListenerHandle
+          ]
+  
+  selectmenu.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/selectmenu.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  squadselection.cpp
+K:\Coding\FreeSynd\source\game\menus\squadselection.h(143,39): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  (compiling source file '../../../source/game/menus/squadselection.cpp')
+  
+K:\Coding\FreeSynd\source\game\menus\squadselection.cpp(89,35): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+K:\Coding\FreeSynd\source\game\menus\squadselection.cpp(93,34): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+K:\Coding\FreeSynd\source\game\menus\squadselection.cpp(127,40): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+K:\Coding\FreeSynd\source\game\menus\squadselection.cpp(132,31): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../../source/game/menus/squadselection.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  Generating code
+K:\Coding\FreeSynd\source\kernel\src\model\mission.cpp(2973): warning C4701: potentially uninitialized local variable 'bx' used
+K:\Coding\FreeSynd\source\kernel\src\model\mission.cpp(2973): warning C4701: potentially uninitialized local variable 'by' used
+K:\Coding\FreeSynd\source\kernel\src\model\mission.cpp(2973): warning C4701: potentially uninitialized local variable 'box' used
+K:\Coding\FreeSynd\source\kernel\src\model\mission.cpp(2973): warning C4701: potentially uninitialized local variable 'boy' used
+K:\Coding\FreeSynd\source\kernel\src\model\pedpathfinding.cpp(962): warning C4701: potentially uninitialized local variable 'lt' used
+K:\Coding\FreeSynd\source\kernel\src\model\static.cpp(626): warning C4701: potentially uninitialized local variable 'sign' used
+K:\Coding\FreeSynd\source\game\menus\selectmenu.cpp(516): warning C4701: potentially uninitialized local variable 'target' used
+  Finished generating code
+  freesynd.vcxproj -> K:\Coding\FreeSynd\build\windows\Release\freesynd.exe
+  Copying SDL2 and MinGW runtime DLLs next to FreeSynd.exe	Copying data folder and freesynd.ini next to FreeSynd.exe

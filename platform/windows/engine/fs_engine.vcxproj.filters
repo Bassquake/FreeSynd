@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\base_app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\appcontext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\system\system.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\dirtylist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\fontmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\spritemanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\animationloader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\animationmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\animationplayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\logomanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\gfx\tilemanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\sound\audio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\sound\musicmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\sound\soundmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\menumanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\widget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\fliplayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\flimenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\engine\src\menus\logoutmenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\enginecommon.h">
+      <Filter>fs-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\base_app.h">
+      <Filter>fs-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\appcontext.h">
+      <Filter>fs-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\config.h">
+      <Filter>fs-engine</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\system\system.h">
+      <Filter>fs-engine\system</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\cp437.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\dirtylist.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\font.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\fontmanager.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\logomanager.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\sprite.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\spritemanager.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\animationloader.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\animationmanager.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\tile.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\tilemanager.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\fstexture.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\gfx\animationplayer.h">
+      <Filter>fs-engine\gfx</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\sound\audio.h">
+      <Filter>fs-engine\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\sound\musicmanager.h">
+      <Filter>fs-engine\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\sound\sound.h">
+      <Filter>fs-engine\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\sound\soundmanager.h">
+      <Filter>fs-engine\sound</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\io\keys.h">
+      <Filter>fs-engine\io</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\io\resources.h">
+      <Filter>fs-engine\io</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\menu.h">
+      <Filter>fs-engine\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\menumanager.h">
+      <Filter>fs-engine\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\widget.h">
+      <Filter>fs-engine\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\fliplayer.h">
+      <Filter>fs-engine\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\flimenu.h">
+      <Filter>fs-engine\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\menus\logoutmenu.h">
+      <Filter>fs-engine\menus</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\events\event.h">
+      <Filter>fs-engine\events</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\engine\include\fs-engine\events\default_events.h">
+      <Filter>fs-engine\events</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="K:\Coding\FreeSynd\source\engine\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{EB46514E-2F7B-3C18-AF9F-94D9F7B9D6F9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-engine">
+      <UniqueIdentifier>{E6C717D2-F81A-3BB7-8A7E-875390A0EB1D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-engine\events">
+      <UniqueIdentifier>{4C0CCE77-9A87-3B08-B57C-C924821D7241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-engine\gfx">
+      <UniqueIdentifier>{30274A49-7F80-3EE5-A330-819C2B92C1D4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-engine\io">
+      <UniqueIdentifier>{FA0481F7-EC55-353E-85DF-8A7F29D0982B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-engine\menus">
+      <UniqueIdentifier>{423464DD-D7A7-3ABB-A763-6BA284615D8D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-engine\sound">
+      <UniqueIdentifier>{D90AD140-9301-31AC-8608-8C7A1CEFC1AA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-engine\system">
+      <UniqueIdentifier>{D2973351-F5D2-3FED-B57C-A1A4AFF0B7DB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

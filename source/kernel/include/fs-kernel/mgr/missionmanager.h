@@ -1,0 +1,117 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#ifndef MISSIONMANAGER_H
+#define MISSIONMANAGER_H
+
+#include <map>
+
+#include "fs-utils/common.h"
+#include "fs-utils/misc/singleton.h"
+#include "fs-kernel/model/leveldata.h"
+#include "fs-kernel/ia/actions.h"
+#include "fs-kernel/mgr/mapmanager.h"
+#include "fs-kernel/model/missionbriefing.h"
+#include "fs-kernel/model/mission.h"
+
+namespace fs_knl {
+/*!
+ * Mission manager class.
+ * Stores information about all missions.
+ */
+class MissionManager : public Singleton < MissionManager > {
+public:
+    MissionManager(fs_eng::TileManager *pTileManager);
+    //! Loads mission for the given mission id
+    Mission *loadMission(int missionId, int paletteId);
+    //! Loads briefing for the given mission id
+    MissionBriefing *loadBriefing(int n);
+
+    Mission * mission() {
+        return pMission_;
+    }
+
+    void destroyMission();
+
+private:
+    /*!
+     * NOTE: Original objects data is based on offsets, but our objects are different
+     * in size and are not in a single memory block.
+     * Because of this indexes in our data, "arrays" are mirrored for object's
+     * position within original array.
+     */
+    struct DataIndex {
+        // indexes within vehicle array
+        uint16_t vindx[64];
+        // indexes within peds array
+        uint16_t pindx[256];
+        // contains indexes for driver's vehicle
+        uint16_t driverindx[256];
+        //uint16 windx[512];
+        WeaponInstance * weapons[512];
+
+        DataIndex() : weapons() {}
+    };
+
+private:
+    //! When loading missions, possibly adds some info to the data
+    void hackMissions(int n, uint8_t *data);
+    //! Reads the mission file and return a representation of that file
+    bool load_level_data(int n, LevelData::LevelDataAll &level_data);
+    // Instanciate a mission from the data file
+    Mission * create_mission(LevelData::LevelDataAll &level_data);
+    //! Creates all weapons
+    void createWeapons(const LevelData::LevelDataAll &level_data, DataIndex &di, Mission *pMission);
+    //! Creates a weapon from the game data
+    WeaponInstance * create_weapon_instance(const LevelData::Weapons &gamdata, Map *pMap);
+    //! Creates all vehicles
+    void createVehicles(const LevelData::LevelDataAll &level_data,
+                            DataIndex &di, Mission *pMission);
+    //! Creates a vehicle from the game data
+    Vehicle * createVehicleInstance(const LevelData::Cars &gamdata, uint16_t id, Map *pMap);
+    //! Creates all peds
+    void createPeds(const LevelData::LevelDataAll &level_data,
+                            DataIndex &di, Mission *pMission);
+    void createScriptedActionsForPed(Mission *pMission,
+                                        DataIndex &di,
+                                        const LevelData::LevelDataAll &level_data,
+                                        PedInstance *pPed);
+    //! Creates objectives
+    void createObjectives(const LevelData::LevelDataAll &level_data,
+                            DataIndex &di, Mission *pMission);
+
+    //! Export data for debug (will be moved in editor)
+    void exportMissionData(LevelData::LevelDataAll &level_data, Mission *pMission);
+
+private:
+    MapManager mapManager_;
+    /*!
+     * Currently played mission.
+     */
+    Mission *pMission_;
+};
+
+}
+#define g_missionCtrl    fs_knl::MissionManager::singleton()
+
+#endif

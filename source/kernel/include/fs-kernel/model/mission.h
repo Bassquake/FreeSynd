@@ -1,0 +1,390 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2010  Bohdan Stelmakh <chamel@users.sourceforge.net>
+ *   Copyright (C) 2010, 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#ifndef MISSION_H
+#define MISSION_H
+
+#include <string>
+#include <vector>
+#include <set>
+
+#include "fs-utils/common.h"
+#include "fs-kernel/model/static.h"
+#include "fs-kernel/model/sfxobject.h"
+#include "fs-kernel/model/map.h"
+#include "fs-kernel/model/leveldata.h"
+#include "fs-kernel/model/pathsurfaces.h"
+#include "fs-kernel/model/squad.h"
+#include "fs-kernel/mgr/weaponmanager.h"
+
+namespace fs_knl {
+
+class Vehicle;
+class PedInstance;
+class Agent;
+class ObjectiveDesc;
+class ProjectileShot;
+class GaussGunShot;
+
+/*!
+ * A class that holds mission statistics.
+ */
+class MissionStats {
+public:
+    void init(size_t nbAgents);
+
+    int nbOfShots() { return nbOfShots_; }
+    int precision() { return (nbOfHits_ * 100) / nbOfShots_; }
+    int enemyKilled() { return enemyKilled_;}
+    int criminalKilled() { return criminalKilled_;}
+    int civilKilled() { return civilKilled_;}
+    int policeKilled() { return policeKilled_;}
+    int guardKilled() { return guardKilled_;}
+    int convinced() { return convinced_;}
+    uint32_t missionDuration() { return missionDuration_; }
+    size_t nbAgents() { return nbAgents_; }
+    size_t nbAgentCaptured() { return nbAgentCaptured_; }
+
+    //! Increments the number of shots by the given amount
+    void incrShots(int shots) { nbOfShots_ += shots; }
+    //! Increments the number of hits by one
+    void incrHits() { nbOfHits_++; }
+    //! Increments the number of hits by the given amount
+    void incrHits(int hits) { nbOfHits_ += hits; }
+    void incrEnemyKilled() { enemyKilled_++; }
+    void incrCriminalKilled() { criminalKilled_++; }
+    void incrCivilKilled() { civilKilled_++; }
+    void incrGuardKilled() { guardKilled_++; }
+    void incrPoliceKilled() { policeKilled_++; }
+    //!
+    void incrAgentCaptured() { nbAgentCaptured_++; }
+    //!
+    void incrConvinced() { convinced_++; }
+    //!
+    void incrMissionDuration(uint32_t elapsed) { missionDuration_ += elapsed; }
+private:
+    /*! How many agents participated in the mission. */
+    size_t nbAgents_;
+    /*! How many time did the mission last. */
+    uint32_t missionDuration_;
+    /*! How many opposing agents where captured.*/
+    size_t nbAgentCaptured_;
+    /*! How many opposing agents where killed.*/
+    int enemyKilled_;
+    /*! How many criminal where killed.*/
+    int criminalKilled_;
+    /*! How many civilian where killed.*/
+    int civilKilled_;
+    /*! How many policemen where killed.*/
+    int policeKilled_;
+    /*! How many guards where killed.*/
+    int guardKilled_;
+    /*! How many people where convinced.*/
+    int convinced_;
+    /*! How many times did agents shoot.*/
+    int nbOfShots_;
+    /*! How many times did agents hit.*/
+    int nbOfHits_;
+};
+
+enum class SurfaceType : uint8_t
+    {
+        Empty    = 0x00,
+        Type01   = 0x01,
+        Type02   = 0x02,
+        Type03   = 0x03,
+        Type04   = 0x04,
+        Type0C   = 0x0C,
+        Type10   = 0x10,
+        Unknown
+    };
+
+/*!
+ * Contains information read from original mission data file.
+ */
+class Mission {
+public:
+    /*!
+     * List of all possible mission status.
+     */
+    enum Status {
+        /*! Mission is currently running.*/
+        kMissionStatusRunning = 0,
+        /*! Player left the mission without finishing it.*/
+        kMissionStatusAborted = 1,
+        /*! Player finished the mission with failure.*/
+        kMissionStatusFailed = 2,
+        /*! Player finished the mission with success.*/
+        kMissionStatusCompleted = 3
+    };
+
+    //! Bit mask for methods on checking on blockers
+    static const uint8_t kBMaskBlockerTargetOutOfMap;
+    static const uint8_t kBMaskBlockerTargetObjectUpdated;
+    static const uint8_t kBMaskBlockerTargetPosUpdated;
+
+    Mission(const LevelData::MapInfos & map_infos, Map *pMap);
+    virtual ~Mission();
+
+    /**
+     * @name Mission life cycle and objectives
+     */
+    ///@{
+    //! Starts the mission.
+    void start(WeaponManager& weaponMgr);
+    //! Ends mission with the given status
+    void endWithStatus(Status status);
+    //! Update mission state
+    void handleTick(uint32_t elapsed, uint32_t diff);
+
+    //! Returns true if mission status is failed
+    bool failed() { return status_ == kMissionStatusFailed; }
+    //! Returns true if mission status is completed
+    bool completed() { return status_ == kMissionStatusCompleted; }
+    //! Returns true if mission is ongoing
+    bool isRunning() { return status_ == kMissionStatusRunning; }
+    //! Returns mission status
+    Status getStatus() { return status_; }
+
+    //! Adds an objective for the mission
+    void addObjective(ObjectiveDesc *pObjective) { objectives_.push_back(pObjective); }
+    //! Check if objectives are completed or failed
+    void checkObjectives();
+    void objectiveMsg(std::string& msg);
+    ///@}
+
+    //*************************************
+    // Map
+    //*************************************
+    /*!
+     * Returns the map used for the mission.
+     */
+    Map * get_map() {return p_map_; }
+
+    /*!
+     * Returns the map id used for the mission.
+     */
+    int map() { return i_map_id_; }
+    uint16_t mapId() { return i_map_id_; }
+
+    int mapWidth();
+    int mapHeight();
+
+    int minX() { return min_x_; }
+    int minY() { return min_y_; }
+    int maxX() { return max_x_; }
+    int maxY() { return max_y_; }
+
+    //*************************************
+    // Map objects
+    //*************************************
+    size_t numPeds() { return peds_.size(); }
+    PedInstance *ped(size_t i) { return peds_[i]; }
+    void addPed(PedInstance *p) { peds_.push_back(p); }
+
+    size_t numVehicles() { return vehicles_.size(); }
+    Vehicle *vehicle(size_t i) { return vehicles_[i]; }
+    void addVehicle(Vehicle *pVehicle) { vehicles_.push_back(pVehicle); }
+
+    size_t numWeaponsOnGround() { return weaponsOnGround_.size(); }
+    WeaponInstance *weaponOnGround(size_t i) { return weaponsOnGround_[i]; }
+    void addWeaponToGround(WeaponInstance *w);
+    void removeWeaponOnGround(WeaponInstance *pWeapon);
+
+    //! Return the numbers of Static
+    size_t numStatics() { return statics_.size(); }
+    //! Return a raw pointer to the Static at given position
+    Static *statics(size_t i) { return statics_.at(i).get(); }
+    //! Add a Static object to manage
+    void addStatic(std::unique_ptr<Static> aStatic);
+
+    //! Return the numbers of SfxObjects
+    size_t numSfxObjects() {return sfx_objects_.size(); }
+    //! Return a raw pointer to the SfXObject at given position
+    SFXObject *sfxObjects(size_t i) { return sfx_objects_.at(i).get(); }
+    //! Add an SfxObject to manage
+    void addSfxObject(std::unique_ptr<SFXObject> so);
+
+    //! Adds the given ProjectileShot to the list of animated shots.
+    void addProjectileShot(std::unique_ptr<ProjectileShot> shot);
+
+    /*!
+     * Adds the given PedInstance to the list of armed peds.
+     * \param pPed The ped to add
+     */
+    void addArmedPed(PedInstance *pPed) {
+        armedPedsVec_.push_back(pPed);
+    }
+    /*!
+     * Returns the number of currently armed peds.
+     */
+    size_t numArmedPeds() { return armedPedsVec_.size(); }
+    /*!
+     * Return the PedInstance at the given index.
+     * \param i Index of the projectile
+     * \return The ped found.
+     */
+    PedInstance *armedPedAtIndex(size_t i) { return armedPedsVec_[i]; }
+    /*!
+     * Removes given ped from the list of armed peds.
+     * \param pPed The ped to remove
+     */
+    void removeArmedPed(PedInstance *pPed);
+
+    //! Search for an object of given nature and given position
+    MapObject * findObjectWithNatureAtPos(int tilex, int tiley, int tilez,
+        MapObject::ObjectNature nature, size_t *searchIndex);
+
+    /*! Return the mission statistics. */
+    MissionStats *stats() { return &stats_; }
+
+    bool setSurfaces();
+    void clrSurfaces();
+    bool getWalkable(TilePoint &mtp);
+    bool getWalkableClosestByZ(TilePoint &mtp);
+    bool getShootableTile(TilePoint *pLocT);
+    bool isTileSolid(int x, int y, int z, int ox, int oy, int oz);
+
+    //*************************************
+    // Methods for shooting verification
+    //*************************************
+    //! Check if a tile is blocking the line between originLoc and pTargetPosW
+    uint8_t checkBlockedByTile(const WorldPoint & originLoc, WorldPoint *pTargetPosW, bool updateLoc, double distanceMax, double *pFinalDest = NULL);
+    //! Check if an object is blocking the line between originLoc and pTargetPosW
+    MapObject * checkBlockedByObject(WorldPoint * originLoc, WorldPoint * pTargetPosW,
+        double *dist, const ShootableMapObject *pOrigin);
+    //! Check if tile or object blocks the line between originLoc and pTarget
+    uint8_t checkIfBlockersInShootingLine(const WorldPoint & originLoc, ShootableMapObject **pTarget,
+        WorldPoint *pTargetPosW = NULL, bool setBlocker = false,
+        bool checkTileOnly = false, double maxr = -1.0, double * distTo = NULL, const ShootableMapObject *pOrigin = NULL);
+    //! Returns the distance between a ped and a object if a path exists between the two
+    uint8_t getPathLengthBetween(PedInstance *pPed, ShootableMapObject* objectToReach, double distanceMax, double *length);
+
+    //! map-tile surfaces : x + y * mmax_x_ + z * mmax_m_xy
+    uint8_t *mtsurfaces_;
+    // map-directions points
+    floodPointDesc *mdpoints_;
+    // for copy in pathfinding
+    floodPointDesc *mdpoints_cp_;
+    // initialized in set_map, used for in-class calculations
+    // map maximum x,y,z values
+    int mmax_x_, mmax_y_, mmax_z_;
+    // initialized in setSurfaces, used for in-class calculations
+    int mmax_m_xy;
+
+    MiniMap * getMiniMap() { return p_minimap_; }
+    /*!
+     * Returns the current squad.
+     */
+    Squad * getSquad() const { return squad_.get(); }
+
+protected:
+    SurfaceType surfaceAt(int x, int y, int z) const;
+    bool sWalkable(uint8_t thisTile, uint8_t upperTile);
+    bool isSurface(uint8_t thisTile);
+    bool isStairs(uint8_t thisTile);
+
+    //! Selects the two best-ranked weapons from a list.
+    std::pair<int, int> findTopTwoWeapons(const std::vector<Weapon*>& weapons);
+    //! Assigns the best available weapons (and optionally a bomb) to enemy agents without weapons.
+    void assignWeaponsToEnemyAgents(const std::vector<Weapon*>& weapons, Weapon* bomb);
+
+    bool tryShiftX(int &bx, int by, int bzm, int &box, int &boy, int shift, int newBox, int newBoy, SurfaceType expected);
+    bool tryShiftY(int bx, int &by, int bzm, int &box, int &boy, int shift, int newBox, int newBoy, SurfaceType expected);
+    bool tryNeighbourAdjustments(int &bx, int &by, int bzm, int &box, int &boy);
+    void finalizeTile(TilePoint tempTile, TilePoint *pLocT);
+    void finalizeDefault(TilePoint &tempTile, TilePoint *pLocT);
+
+    //! At the end of the mission calculate all stats
+    void updateStats();
+
+    /*!
+     * Sets the given map for the mission.
+     * If p_map is not null, creates a minimap from it.
+     * \param p_map The map to set.
+     */
+    void set_map(Map *p_map);
+
+protected:
+
+    /*! List of all vehicles, cars and train.*/
+    std::vector<Vehicle *> vehicles_;
+    std::vector<PedInstance *> peds_;
+    //! List of all weapons that have no owner
+    std::vector<WeaponInstance *> weaponsOnGround_;
+    //! List of all Static to animate
+    std::vector<std::unique_ptr<Static>> statics_;
+    //! List of SFXObject that need to be animated
+    std::vector<std::unique_ptr<SFXObject>> sfx_objects_;
+    //! List of ProjectileShot that need to be animated
+    std::vector<std::unique_ptr<ProjectileShot>> projectileShots_;
+    /*!
+     * A vector constantly updated with the peds that hold a weapon.
+     * It's used for performance reasons.
+     */
+    std::vector<PedInstance *> armedPedsVec_;
+
+    std::vector <ObjectiveDesc *> objectives_;
+    //std::vector <ObjectiveDesc> sub_objectives_;
+    uint16_t cur_objective_;
+    /*!
+     * Mission status.
+     * By default, a mission is running but it can be
+     * aborted if user escapes the mission, failed if
+     * missions objectives are not fullfilled or completed.
+     */
+    Status status_;
+
+    int min_x_, min_y_, max_x_, max_y_;
+    /*!
+     * The id of the map for that mission.
+     */
+    uint16_t i_map_id_;
+    /*!
+     * A pointer to the map.
+     */
+    Map *p_map_;
+
+    /*! Statistics : time, shots, ...*/
+    MissionStats stats_;
+    /*!
+     * minimap in colours, map z = 0 tiles transformed based on
+     * walkdata->minimap_colours_ in function createMinimap
+     */
+    MiniMap *p_minimap_;
+    /*!
+     * The squad selected for the mission. It contains only active agents.
+     */
+    std::unique_ptr<Squad> squad_;
+};
+
+/** \brief Event sent when a mission has ended.
+ */
+struct MissionEndedEvent {
+    // mission status
+    Mission::Status status;
+};
+
+}
+#endif

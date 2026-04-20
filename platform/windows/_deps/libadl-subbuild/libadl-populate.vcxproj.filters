@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\bf5af37ec29ca3d5ee4b3225db11ffa1\libadl-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\bf5af37ec29ca3d5ee4b3225db11ffa1\libadl-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\bf5af37ec29ca3d5ee4b3225db11ffa1\libadl-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\bf5af37ec29ca3d5ee4b3225db11ffa1\libadl-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\bf5af37ec29ca3d5ee4b3225db11ffa1\libadl-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\bf5af37ec29ca3d5ee4b3225db11ffa1\libadl-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\bf5af37ec29ca3d5ee4b3225db11ffa1\libadl-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\bf5af37ec29ca3d5ee4b3225db11ffa1\libadl-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\123d3f87b5914d088e5271973ba411a7\libadl-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\3ecb2769e95e1b805fa4c3b0ab8b8b97\libadl-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="K:\Coding\FreeSynd\platform\windows\_deps\libadl-subbuild\CMakeFiles\libadl-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{5459052B-BBE9-383B-876F-6EB54BFC4D20}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

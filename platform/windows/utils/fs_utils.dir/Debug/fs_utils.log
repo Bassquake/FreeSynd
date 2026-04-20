@@ -1,0 +1,59 @@
+﻿  Building Custom Rule K:/Coding/FreeSynd/source/utils/CMakeLists.txt
+  log.cpp
+  file.cpp
+K:\Coding\FreeSynd\source\utils\src\file.cpp(176,13): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::filesystem::path::value_type *'
+      K:\Coding\FreeSynd\source\utils\src\file.cpp(176,13):
+      consider using '%ls' in the format string
+      K:\Coding\FreeSynd\source\utils\src\file.cpp(176,13):
+      consider using '%lls' in the format string
+      K:\Coding\FreeSynd\source\utils\src\file.cpp(176,13):
+      consider using '%Ls' in the format string
+      K:\Coding\FreeSynd\source\utils\src\file.cpp(176,13):
+      consider using '%ws' in the format string
+  
+K:\Coding\FreeSynd\source\utils\src\file.cpp(179,13): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::filesystem::path::value_type *'
+      K:\Coding\FreeSynd\source\utils\src\file.cpp(179,13):
+      consider using '%ls' in the format string
+      K:\Coding\FreeSynd\source\utils\src\file.cpp(179,13):
+      consider using '%lls' in the format string
+      K:\Coding\FreeSynd\source\utils\src\file.cpp(179,13):
+      consider using '%Ls' in the format string
+      K:\Coding\FreeSynd\source\utils\src\file.cpp(179,13):
+      consider using '%ws' in the format string
+  
+K:\Coding\FreeSynd\source\utils\src\file.cpp(531,25): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../source/utils/src/file.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  configfile.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24): warning C4242: '=': conversion from 'int' to 'char', possible loss of data
+  (compiling source file '../../source/utils/src/configfile.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\algorithm(3800,24):
+      the template instantiation context (the oldest one first) is
+          K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h(181,10):
+          see reference to function template instantiation '_OutIt std::transform<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,ConfigFile::string_as_T::<lambda_1>>(const _InIt,const _InIt,_OutIt,_Fn)' being compiled
+          with
+          [
+              _OutIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Elem=char,
+              _InIt=std::_String_iterator<std::_String_val<std::_Simple_types<char>>>,
+              _Fn=ConfigFile::string_as_T::<lambda_1>
+          ]
+  
+  portablefile.cpp
+  dernc.cpp
+K:\Coding\FreeSynd\source\utils\src\dernc.cpp(138,31): warning C4018: '<': signed/unsigned mismatch
+  seqmodel.cpp
+  Generating Code...
+  fs_utils.vcxproj -> K:\Coding\FreeSynd\platform\windows\utils\Debug\fs_utils.lib

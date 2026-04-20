@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="K:\Coding\FreeSynd\source\utils\src\log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\utils\src\file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\utils\src\configfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\utils\src\portablefile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\utils\src\dernc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="K:\Coding\FreeSynd\source\utils\src\seqmodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\common.h">
+      <Filter>fs-utils</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\log\log.h">
+      <Filter>fs-utils\log</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\io\dernc.h">
+      <Filter>fs-utils\io</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\io\file.h">
+      <Filter>fs-utils\io</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\io\configfile.h">
+      <Filter>fs-utils\io</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\io\portablefile.h">
+      <Filter>fs-utils\io</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\io\formatversion.h">
+      <Filter>fs-utils\io</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\misc\singleton.h">
+      <Filter>fs-utils\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\misc\seqmodel.h">
+      <Filter>fs-utils\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Coding\FreeSynd\source\utils\include\fs-utils\misc\timer.h">
+      <Filter>fs-utils\misc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="K:\Coding\FreeSynd\source\utils\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{EB46514E-2F7B-3C18-AF9F-94D9F7B9D6F9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-utils">
+      <UniqueIdentifier>{99F43750-A7C5-369C-9B8D-7E96643A1CDF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-utils\io">
+      <UniqueIdentifier>{E6F1CEBD-B3EE-3B37-9286-F7134555E5E2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-utils\log">
+      <UniqueIdentifier>{437EB3F4-9110-37E0-AC7A-BFE624DA2CFF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fs-utils\misc">
+      <UniqueIdentifier>{A85F2790-6334-36AC-9A6C-742255893A56}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
