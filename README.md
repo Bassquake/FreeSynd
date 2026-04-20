@@ -3,6 +3,13 @@
 ## Notes
 This is based on the code from _bni_ over at [bni/freesynd](https://github.com/bni/freesynd). I've rejigged the project files and created and fixed some ARM specific errors for Android project too. I have added binaries for Android and Windows but they do not include the game files as its not allowed. See important note below about game assets and there are instructions on how to add them.
 
+Project files are in:
+```
+\build
+    \android <-- Open in this folder in Android Studio
+    \windows <-- Open the solution file in here for Visual Studio
+```
+
 > [!IMPORTANT]
 > You need to supply the games asset files. Buy the game or find cd/disk of it. Syndicate Plus will **not** work, it has to be the original 1993 release without American Revolt (Check [eBay](https://www.ebay.co.uk/sch/i.html?_nkw=syndicate+bullfrog+-wars+-plus+-american+-revolt&_sacat=0&_odkw=syndicate+bullfrog+-wars+-plus&_osacat=0&_sop=15) and the DOS version is probably easier to install and extract files from). Install the apk on your android, or go to build/windows where the exe and required dlls are already there, then copy out the data files you got from buying the game disk, into the 'data' folder. **ALL** folder and filenames needs to be lowercase (see below on how to easily do this). SDL2 and other libraries are already included in this project.
 
@@ -58,10 +65,10 @@ For Windows, add the game files to 'assets' folder, compile as normal and the fi
 
 The file structure should be like so:
 ```
-data
-    cursors
-    lang
-    ref
+\data
+    \cursors
+    \lang
+    \ref
     col01.dat
     game01.dat
     ... etc
