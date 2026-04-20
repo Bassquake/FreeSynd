@@ -1,3 +1,4 @@
+.vs
 # Ignore everything inside these folders
 assets/data/*
 build/windows/*
