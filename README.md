@@ -62,6 +62,8 @@ When youre building your own apk, the game files will be auto added to the apk i
 
 # Windows (64bit)
 
+You can try to open the solution file in platform/windows but Visual Studio has an annoying habit of using absolute paths so they might be wrong. If so, generate new project files. I like to use cmake-gui from [cmake](https://cmake.org/download/). You might have to repoint the library and includes folders if it complains they're missing. All headers and library files are in the source folder under 'extern' and 'includes'.
+
 For Windows, add the game files to 'assets' folder, compile as normal and the final exe and the required sdl2 dlls and game files will be in the build/windows folder. Just run the exe and go!
 
 The file structure should be like so:
