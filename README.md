@@ -1,5 +1,7 @@
 # FreeSynd port for Android and Windows
 
+![Screenshot of FreeSynd playing on an Android phone.](https://github.com/user-attachments/assets/f8c38c55-8762-4b4b-8b79-4700106e7927)
+
 ## Notes
 This is based on the code from _bni_ over at [bni/freesynd](https://github.com/bni/freesynd). I've rejigged the project files and created and fixed some ARM specific errors for Android project too. I have added binaries for Android and Windows but they do not include the game files as its not allowed. See important note below about game assets and there are instructions on how to add them.
 
