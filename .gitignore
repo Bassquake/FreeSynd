@@ -5,6 +5,9 @@ build/android/*
 
 # Do NOT ignore the .gitkeep file inside them
 !assets/data/.gitkeep
+!assets/data/cursors/.gitkeep
+!assets/data/lang/.gitkeep
+!assets/data/ref/.gitkeep
 !build/windows/.gitkeep
 !build/android/.gitkeep
 platform/android/
