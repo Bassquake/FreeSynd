@@ -26,7 +26,7 @@ All files should now be from COL01.DAT to col1.dat etc.
 >Best way to play is connect a bluetooth keyboard and mouse to your phone/Quest as I havent added touchscreen scrolling yet. 
 
 ### Keys
-- AWSD keys can pan around.
+- WASD keys can pan around.
 - P to Pause.
 - Number keys 1-4 to select an agent.
 - Esc to quit or go back (Not added the functionality yet so you'd have to restart the app to quit and start again).
