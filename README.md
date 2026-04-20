@@ -70,8 +70,16 @@ The file structure should be like so:
 ```
 \data
     \cursors
+        cursors.png
     \lang
+        english.lng
+        french.lng
+        german.lng
+        italian.lng
     \ref
+        original_data.crc
+        research.dat
+        weapons.dat
     col01.dat
     game01.dat
     ... etc
