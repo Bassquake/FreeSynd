@@ -28,7 +28,7 @@ All files should now be from COL01.DAT to col1.dat etc.
 - P to Pause.
 - Number keys 1-4 to select an agent.
 - Esc to quit or go back (Not added the functionality yet so you'd have to restart the app to quit and start again).
-- Right mouse key to shoot manually.
+- Right mouse key to shoot manually (Not working properly yet).
 - Dont click Middle Mouse button as Android uses it to minimise the app and it will crash out.
 
 # Android (64bit)
@@ -84,6 +84,7 @@ SDL2_mixer.dll
 
 # To do
 - Add support for using touchscreen to move around.
+- Fix right mouse to shoot.
 - Fix issue when minimised app it just goes black and eventually crashes out.
 - Fix resizing issue on Quest.
 - Untested Linux support. Will add later.
