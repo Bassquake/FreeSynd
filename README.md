@@ -1,15 +1,35 @@
 # FreeSynd port for Android and Windows
 
 ## Notes
-This is based on the code from bni over at https://github.com/bni/freesynd. I've rejigged the project files and created an Android project too.
-You need to supply the games asset files. Buy the game or find cd/disk of it (American Revolt will not work, has to be original release), install it on your pc/android (see below where they go) and copy the assets to this projects 'assets' folder. ALL folder and filenames needs to be lowercase. SDL2 and other libraries are already included in this project.
+This is based on the code from _bni_ over at [bni/freesynd](https://github.com/bni/freesynd). I've rejigged the project files and created and fixed some ARM specific errors for Android project too. I have added binaries for Android and Windows but they do not include the game files as its not allowed. See important note below about game assets and there are instructions on how to add them.
+
+> [!IMPORTANT]
+> You need to supply the games asset files. Buy the game or find cd/disk of it. Syndicate Plus will **not** work, it has to be the original 1993 release without American Revolt (Check [eBay](https://www.ebay.co.uk/sch/i.html?_nkw=syndicate+bullfrog+-wars+-plus+-american+-revolt&_sacat=0&_odkw=syndicate+bullfrog+-wars+-plus&_osacat=0&_sop=15) and the DOS version is probably easier to install and extract files from). Install the apk on your android, or go to build/windows where the exe and required dlls are already there, then copy out the data files you got from buying the game disk, into the 'data' folder. **ALL** folder and filenames needs to be lowercase (see below on how to easily do this). SDL2 and other libraries are already included in this project.
+
+### Lowercase the game files
+Go to the assets data folder in powershell and run:
+```
+Get-ChildItem -File | Rename-Item -NewName { $_.Name.ToLower() }
+```
+All files should now be from COL01.DAT to col1.dat etc.
+
+Best way to play is connect a bluetooth keyboard and mouse to your phone/quest as I havent added touchscreen scrolling yet. 
+
+### Keys
+- AWSD keys can pan around.
+- P to Pause.
+- Number keys 1-4 to select an agent.
+- Esc to quit or go back (Not added the functionality yet so you'd have to restart the app to quit and start again).
+- Right mouse key to shoot manually.
+- Dont click Middle Mouse button as Android uses it to minimise the app and it will crash out.
 
 # Android (64bit)
 This will work on any Android device above version 8.0 (Oreo). Also works on Quest for extra large gameplay!!
 
-If you downloaded the apk and just want to get started without compiling, then install the apk, then copy the game files into the data folder. Youll need some file management on your pc.
+If you downloaded the apk and just want to get started without compiling, install the apk as normal, then copy the game files into the data folder. Youll need some file management program on your pc such as the [SDK Platform-Tools](https://developer.android.com/tools/releases/platform-tools). Android is a bit of a bugbear when it comes to files and its permissions!
 
 The folder layout should be like so on your device:
+```
 /
     >data
         >data
@@ -17,33 +37,42 @@ The folder layout should be like so on your device:
                 >files
                     >data <-- game files go in here
                 freesynd.ini
+```
 
 If you find you get a "Configuration file not found" or similar and the files are definitly in the right place, its likely due to permmisions of the files. Youll need to do the following:
 
-Enter terminal in Android with your phone connected.
-
-Type the following:
+Enter terminal in Android or PowerShell with your phone connected:
+```
 adb shell
 su
 restorecon -R /data/data/com.bassquake.freesynd/
+```
 
-That should now work and you should try to relaunch the app again.
+That should now work and try to relaunch the app again.
 
-For Android, when youre building your own apk, enable including asset files into the apk byt editing build.gradle.kts (app) and comment the lines:
-    sourceSets {
-        getByName("main") {
-            // GAME ASSET FILES PATH
-            assets.srcDirs("${project.rootDir}../../../assets")
-        }
-    }
-
-This will embed and then extract the game files when you install the apk on your device. Final apk is copied into build/android folder (game files are already compressed into it).
+When youre building your own apk, the game files will be auto added to the apk if they're in the assets folder. Final apk is copied into build/android folder (game files are already compressed into it). You only need to install the apk as normal on the phone/quest by copying the apk to its 'Downloads' folder and then install it on the device. On Quest you'll likely need to have [developer mode](https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup/) on.
 
 # Windows (64bit)
 
 For Windows, add the game files to 'assets' folder, compile as normal and the final exe and the required sdl2 dlls and game files will be in the build/windows folder. Just run the exe and go!
 
-## To do
+The file structure should be like so:
+```
+data
+    cursors
+    lang
+    ref
+    col01.dat
+    game01.dat
+    ... etc
+freesynd.exe
+freesynd.ini
+SDL2.dll
+SDL2_image.dll
+SDL2_mixer.dll
+```
+
+# To do
 - Add support for using touchscreen to move around.
 - Fix issue when minimised app it just goes black and eventually crashes out.
 - Untested Linux support. Will add later.
