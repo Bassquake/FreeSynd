@@ -1,3 +1,9 @@
-assets/data/
-build/windows/
-build/android/
+# Ignore everything inside these folders
+assets/data/*
+build/windows/*
+build/android/*
+
+# Do NOT ignore the .gitkeep file inside them
+!assets/data/.gitkeep
+!build/windows/.gitkeep
+!build/android/.gitkeep
