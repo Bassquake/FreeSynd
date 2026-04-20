@@ -7,3 +7,4 @@ build/android/*
 !assets/data/.gitkeep
 !build/windows/.gitkeep
 !build/android/.gitkeep
+platform/android/
