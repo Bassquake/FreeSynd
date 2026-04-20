@@ -20,7 +20,8 @@ Get-ChildItem -File | Rename-Item -NewName { $_.Name.ToLower() }
 ```
 All files should now be from COL01.DAT to col1.dat etc.
 
-Best way to play is connect a bluetooth keyboard and mouse to your phone/quest as I havent added touchscreen scrolling yet. 
+> [!TIP]
+>Best way to play is connect a bluetooth keyboard and mouse to your phone/Quest as I havent added touchscreen scrolling yet. 
 
 ### Keys
 - AWSD keys can pan around.
@@ -31,7 +32,7 @@ Best way to play is connect a bluetooth keyboard and mouse to your phone/quest a
 - Dont click Middle Mouse button as Android uses it to minimise the app and it will crash out.
 
 # Android (64bit)
-This will work on any Android device above version 8.0 (Oreo). Also works on Quest for extra large gameplay!!
+This will work on any Android device above version 8.0 (Oreo). Also works on Quest for extra large screen gameplay (note: Dragging window size in Quest will crash it at the moment)!!
 
 If you downloaded the apk and just want to get started without compiling, install the apk as normal, then copy the game files into the data folder. Youll need some file management program on your pc such as the [SDK Platform-Tools](https://developer.android.com/tools/releases/platform-tools). Android is a bit of a bugbear when it comes to files and its permissions!
 
@@ -82,5 +83,6 @@ SDL2_mixer.dll
 # To do
 - Add support for using touchscreen to move around.
 - Fix issue when minimised app it just goes black and eventually crashes out.
+- Fix resizing issue on Quest.
 - Untested Linux support. Will add later.
 - Add support for MacOS for Intel and M chips needs adding later.
