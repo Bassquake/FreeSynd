@@ -34,7 +34,7 @@ All files should now be from COL01.DAT to col1.dat etc.
 # Android (64bit)
 This will work on any Android device above version 8.0 (Oreo). Also works on Quest for extra large screen gameplay (note: Dragging window size in Quest will crash it at the moment)!!
 
-If you downloaded the apk and just want to get started without compiling, install the apk as normal, then copy the game files into the data folder. Youll need some file management program on your pc such as the [SDK Platform-Tools](https://developer.android.com/tools/releases/platform-tools). Android is a bit of a bugbear when it comes to files and its permissions!
+If you downloaded the apk and just want to get started without compiling, install the apk as normal, then copy the game files into the data folder. You'll need some file management program on your pc such as the [SDK Platform-Tools](https://developer.android.com/tools/releases/platform-tools). Android is a bit of a bugbear when it comes to files and its permissions!
 
 The folder layout should be like so on your device:
 ```
