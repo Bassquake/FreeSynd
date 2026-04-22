@@ -37,8 +37,8 @@
 #else
 
 #define LOG(type, comp, meth, str)
-#define FSERR(t, c, m, str)  { printf ("ERROR: "); printf str; printf("\n");}  // NOLINT
-#define FSINFO(t, c, m, str) { printf ("INFO : "); printf str; printf("\n");}  // NOLINT
+#define FSERR(t, c, m, str)  { printf ("ERROR: "); printf ("%s", str); printf("\n");}  // NOLINT
+#define FSINFO(t, c, m, str) { printf ("INFO : "); printf ("%s", str); printf("\n");}  // NOLINT
 
 #endif
 
