@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.api.ApkVariantOutputImpl
+
 plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.android.application)
@@ -25,7 +27,16 @@ android {
                 // Support 16KB compiling
                 arguments += listOf("-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON")
                 // This ensures the compiler builds for your phone's architecture
-                abiFilters.addAll(listOf("arm64-v8a", "x86_64"))
+                abiFilters.addAll(listOf("arm64-v8a", "armeabi-v7a", "x86_64", "x86"))
+            }
+        }
+        // MAKE SEPARATE 32bit and 64 BIT APKS
+        splits {
+            abi {
+                isEnable = true
+                reset()
+                include("arm64-v8a", "armeabi-v7a", "x86_64", "x86")
+                isUniversalApk = false
             }
         }
     }
@@ -72,33 +83,51 @@ android {
             dimension = "device"
         }
     }*/
-    // COPY FINAL APK TO build/android FOLDER
-    applicationVariants.all {
-        val variant = this
-        val variantName = variant.name.capitalize()
+    // SET VERSION CODE FOR SEPARATE 32bit/64bit APKS
+    android.applicationVariants.all {
+        outputs.forEach { output ->
+            // Explicitly cast to the Implementation class to access the ABI filter
+            val variantOutput = output as? ApkVariantOutputImpl
+            val abi = variantOutput?.getFilter(com.android.build.OutputFile.ABI)
 
-        variant.outputs
-            .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
-            .forEach { output ->
-                // 1. Rename the file in the default build folder
-                val newName = "freesynd-${variant.versionName}.apk"
-                output.outputFileName = newName
-
-                // 2. Create a task to copy it to your target folder
-                val copyTask = tasks.register<Copy>("copy${variantName}ApkToFolder") {
-                    from(output.outputFile)
-                    // Change this path to your "particular folder"
-                    into(file("${project.rootDir}/../../build/android"))
-
-                    // Ensure the copy happens after the APK is actually built
-                    dependsOn(variant.assembleProvider)
-                }
-
-                // 3. Automatically run the copy whenever you build this variant
-                variant.assembleProvider.configure {
-                    finalizedBy(copyTask)
-                }
+            if (abi != null) {
+                val abiMultiplier = if (abi == "arm64-v8a") 2 else 1
+                val baseVersionCode = versionCode ?: 0
+                variantOutput.versionCodeOverride = baseVersionCode * 10 + abiMultiplier
             }
+        }
+        // COPY FINAL APKS TO build/android FOLDER
+            val variant = this
+            val variantName = variant.name.capitalize()
+            val versionName = variant.versionName
+
+            variant.outputs
+                .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
+                .forEach { output ->
+                    // Use the output name (e.g., "arm64-v8a", "x86", or "universal")
+                    // to ensure the task name is unique even if there are multiple APKs
+                    val outputName = output.name.capitalize()
+                    val targetFileName = "freesynd-$versionName-${output.name}.apk"
+
+                    // 1. Rename the file in the default build folder
+                    output.outputFileName = targetFileName
+
+                    // 2. Register a UNIQUE task for this specific output
+                    val copyTask = tasks.register<Copy>("copy${variantName}${outputName}ApkToFolder") {
+                        from(output.outputFile.parentFile)
+                        into(file("${project.rootDir}/../../build/android"))
+
+                        include(targetFileName)
+
+                        dependsOn(variant.assembleProvider)
+                    }
+
+                    // 3. Automatically run the copy whenever you build this variant
+                    variant.assembleProvider.configure {
+                        finalizedBy(copyTask)
+                    }
+
+        }
     }
 }
 
