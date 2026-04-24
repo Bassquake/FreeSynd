@@ -1,14 +1,23 @@
 import com.android.build.gradle.internal.api.ApkVariantOutputImpl
-
+import java.util.Properties
+import java.io.FileInputStream
 plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.android.application)
+}
+// SET KEY FOR RELEASE BUILD
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        load(FileInputStream(localPropertiesFile))
+    }
 }
 
 android {
     signingConfigs {
         create("release") {
-            storeFile = file(project.findProperty("DEBUG_KEY_PATH") ?: "debug.keystore")
+            val keyPath = localProperties.getProperty("DEBUG_KEY_PATH") ?: "debug.keystore"
+            storeFile = file(keyPath)
             storePassword = "android"
             keyAlias = "androiddebugkey"
             keyPassword = "android"
@@ -70,12 +79,12 @@ android {
         jvmTarget = "11"
     }
     // HIDE OR INCLUDE ASSETS INTO APK
-    sourceSets {
+    /*sourceSets {
         getByName("main") {
             // GAME ASSET FILES PATH
             assets.srcDirs("${project.rootDir}../../../assets")
         }
-    }
+    }*/
     externalNativeBuild {
         cmake {
             // SOURCE PATH
