@@ -20,6 +20,9 @@
  *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
  * 
  */
+#ifdef __ANDROID__
+#include <sys/system_properties.h>
+#endif
 
 #include "system_sdl.h"
 
@@ -93,7 +96,20 @@ SystemSDL::~SystemSDL() {
 
 void SystemSDL::initialize(bool fullscreen) {
     LOG(Log::k_FLG_INFO, "SystemSDL", "initialize", ("initializing System SDL"))
+    
+    // Apply to ALL devices for that sharp pixel-art look
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
 
+    #ifdef __ANDROID__
+        // We still use opengles2 for the old TV's stability
+        char sdk_ver_str[PROP_VALUE_MAX];
+        if (__system_property_get("ro.build.version.sdk", sdk_ver_str) > 0) {
+            if (atoi(sdk_ver_str) <= 28) {
+                SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengles2");
+            }
+        }
+    #endif
+    
     if (SDL_Init( SDL_INIT_VIDEO ) < 0) {
         throw InitializationFailedException(std::format("Critical error, SDL could not be initialized! SDL Error :  {}", SDL_GetError()));
     }
@@ -182,6 +198,9 @@ void SystemSDL::showError(const char *errorMsg) {
  * @return True if ok.
  */
 bool SystemSDL::clearScreen() {
+    // Make sure we are drawing into the game texture
+    SDL_SetRenderTarget(pRenderer_, pGameTexture_);
+    
     SDL_SetRenderDrawColor(pRenderer_, 0x00, 0x00, 0x00, 0xFF);
     return SDL_RenderClear(pRenderer_);
 }
@@ -207,7 +226,8 @@ void SystemSDL::updateScreen() {
     SDL_RenderPresent(pRenderer_);
 
     // Restore game texture as render target for the next frame
-    SDL_SetRenderTarget(pRenderer_, pGameTexture_);
+    // COMMENTED OUT AS STOPPED GAME GRAPHICS RELOADING WHEN MINIMISED ON ANDROID
+    //SDL_SetRenderTarget(pRenderer_, pGameTexture_);
 }
 
 bool SystemSDL::resetRenderTarget() {
@@ -379,6 +399,11 @@ void SystemSDL::fillKeyEvent(SDL_Keysym keysym, FS_Event &evtOut) {
     evtOut.key.keyMods = keyModState_;
 }
 
+// RESETS GRAPHICS CONTEXT WHEN RESIZING THE WINDOW
+void SystemSDL::handleRenderDeviceReset() {
+    handleRenderDeviceReset();    // Reload screen texture
+}
+
 //! Pumps an event from the event queue
 /*!
  * Watch the event queue and dispatch events.
@@ -394,6 +419,11 @@ bool SystemSDL::pumpEvents(FS_Event &evtOut) {
     evtOut.type = EVT_NONE;
 
     if (SDL_PollEvent(&evtIn)) {
+        // Handle renderer reset BEFORE the switch
+        if (evtIn.type == SDL_RENDER_DEVICE_RESET ||
+            evtIn.type == SDL_RENDER_TARGETS_RESET) {
+            handleRenderDeviceReset();
+        }
         switch (evtIn.type) {
         case SDL_QUIT:
             evtOut.quit.type = EVT_QUIT;

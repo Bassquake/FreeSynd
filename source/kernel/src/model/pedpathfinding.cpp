@@ -1313,7 +1313,7 @@ void PedInstance::createPath(Mission *m, floodPointDesc *mdpmirror, std::vector<
 
     do {
         unsigned char nt = ct;
-        int dist = 5;// CHANGE FROM char TO int SO WORKS FOR ARM
+        char dist = 5;
         WorldPoint toadd;
         pfdp = &(mdpmirror[currentTile.tx + currentTile.ty * m->mmax_x_
                     + currentTile.tz * m->mmax_m_xy]);
@@ -1819,9 +1819,9 @@ void PedInstance::buildFinalDestinationPath(Mission *m, std::vector<TilePoint> &
         unsigned char twdn = m->mtsurfaces_[it->tx
             + it->ty * m->mmax_x_
             + it->tz * m->mmax_m_xy];
-        int xf = prvpn.tx - it->tx;// CHANGE FROM char TO int SO WORKS FOR ARM
-        int yf = prvpn.ty - it->ty;
-        int zf = prvpn.tz - it->tz;
+        char xf = prvpn.tx - it->tx;
+        char yf = prvpn.ty - it->ty;
+        char zf = prvpn.tz - it->tz;
             if (twd > 0x0 && twd < 0x05) {
                 if (twdn > 0x0 && twdn < 0x05) {
                     dest_path_.push_back(*it);

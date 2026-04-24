@@ -124,6 +124,8 @@ public:
 
     //! @copydoc System::getLanguageFromSystem()
     fs_eng::FS_Lang getLanguageFromSystem() override;
+    // DECLARATION FOR HANDLING WINDOW ISSUES
+    void handleRenderDeviceReset();
 
 protected:
     //! Creates a SDL window either for fullscreen or not
