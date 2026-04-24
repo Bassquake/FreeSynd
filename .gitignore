@@ -13,3 +13,5 @@ build/android/*
 !build/windows/.gitkeep
 !build/android/.gitkeep
 platform/android/
+platform/windows/x86/
+platform/windows/x64/
