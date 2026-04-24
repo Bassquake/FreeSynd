@@ -1,17 +1,17 @@
 platform/windows/.vs
 
 # Ignore everything inside these folders
-assets/data/*
-build/windows/*
-build/android/*
+#assets/data/*
+#build/windows/*
+#build/android/*
 
 # Do NOT ignore the .gitkeep file inside them
-!assets/data/.gitkeep
-!assets/data/cursors/.gitkeep
-!assets/data/lang/.gitkeep
-!assets/data/ref/.gitkeep
-!build/windows/.gitkeep
-!build/android/.gitkeep
-platform/android/
-platform/windows/x86/
-platform/windows/x64/
+#!assets/data/.gitkeep
+#!assets/data/cursors/.gitkeep
+#!assets/data/lang/.gitkeep
+#!assets/data/ref/.gitkeep
+#!build/windows/.gitkeep
+#!build/android/.gitkeep
+#platform/android/
+#platform/windows/x86/
+#platform/windows/x64/
