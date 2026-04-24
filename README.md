@@ -15,7 +15,7 @@ Project files are in:
 ```
 
 > [!IMPORTANT]
-> You need to supply the games asset files. Buy the game or find cd/disk of it. Syndicate Plus will **not** work, it has to be the original 1993 release without American Revolt (Check [eBay](https://www.ebay.co.uk/sch/i.html?_nkw=syndicate+bullfrog+-wars+-plus+-american+-revolt&_sacat=0&_odkw=syndicate+bullfrog+-wars+-plus&_osacat=0&_sop=15). The DOS version is probably easier to install and extract files from). Install the apk on your android, or go to build/windows where the exe and required dlls are already there if youve compiled, then copy out the data files you got from buying the game disk, into a folder called 'data' and copy that folder into the 'assets' folder. **ALL** folder and filenames needs to be lowercase (see below on how to easily do this). SDL2 and other libraries are already included in this project.
+> You need to supply the games asset files. Buy the game or find cd/disk of it. Syndicate Plus will **not** work, it has to be the original 1993 release without American Revolt (Check [eBay](https://www.ebay.co.uk/sch/i.html?_nkw=syndicate+bullfrog+-wars+-plus+-american+-revolt&_sacat=0&_odkw=syndicate+bullfrog+-wars+-plus&_osacat=0&_sop=15). The DOS version is probably easier to install and extract files from). Install the apk on your android, or go to build/windows where the exe and required dlls are already there if you've compiled, then copy out the data files you got from buying the game disk, into a folder called 'data' and copy that folder into the 'assets' folder. **ALL** folder and filenames needs to be lowercase (see below on how to easily do this). SDL2 and other libraries are already included in this project.
 
 ### Lowercase the game files
 Go to the assets data folder in powershell and run:
@@ -25,7 +25,7 @@ Get-ChildItem -File | Rename-Item -NewName { $_.Name.ToLower() }
 All files should now be from COL01.DAT to col1.dat etc.
 
 > [!TIP]
->Best way to play is connect a bluetooth keyboard and mouse to your phone/Quest as I havent added touchscreen scrolling yet. 
+>Best way to play is connect a Bluetooth keyboard and mouse to your phone/Quest as I haven't added touchscreen scrolling yet. 
 
 ### Keys
 - WASD keys can pan around.
@@ -51,7 +51,7 @@ The folder layout should be like so on your device:
                 freesynd.ini
 ```
 
-If you find you get a "Configuration file not found" or similar and the files are definitly in the right place, its likely due to permmisions of the files. Youll need to do the following:
+If you find you get a "Configuration file not found" or similar and the files are definitely in the right place, its likely due to permissions of the files. You'll need to do the following:
 
 Enter terminal in Android or PowerShell with your phone connected:
 ```
