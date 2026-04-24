@@ -1,5 +1,0 @@
-﻿  Building Custom Rule K:/Coding/FreeSynd/source/engine/CMakeLists.txt
-  sdlmixeraudio.cpp
-K:\Coding\FreeSynd\source\engine\src\sound\mixer\sdlmixeraudio.cpp(92,51): warning C4100: 'fmt': unreferenced parameter
-  sdlmixersound.cpp
-  fs_engine_sdlmixer.vcxproj -> K:\Coding\FreeSynd\platform\windows\engine\Release\fs_engine_sdlmixer.lib

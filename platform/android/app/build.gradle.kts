@@ -6,14 +6,22 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        create("release") {
+            storeFile = file(project.findProperty("DEBUG_KEY_PATH") ?: "debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
     namespace = "com.bassquake.freesynd"
     compileSdk = 36
     ndkVersion = "27.3.13750724"
 
     defaultConfig {
         applicationId = "com.bassquake.freesynd"
-        minSdk = 26
-        targetSdk = 36
+        minSdk = 24
+        targetSdk = 28
         versionCode = 1
         versionName = "0.958"
 
@@ -22,7 +30,7 @@ android {
         externalNativeBuild {
             cmake {
                 // STOP REBUILDING compile_commands.json SO VS STOPS RELOADING
-                arguments("-DCMAKE_EXPORT_COMPILE_COMMANDS=OFF")
+                arguments("-DCMAKE_BUILD_TYPE=Release","-DCMAKE_EXPORT_COMPILE_COMMANDS=OFF")
                 cppFlags("")
                 // Support 16KB compiling
                 arguments += listOf("-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON")
@@ -40,6 +48,10 @@ android {
             }
         }
     }
+    // IGNORE "Meeting Google Play requirements" because we're using TargetSdk 24
+    lint {
+        disable += "ExpiredTargetSdkVersion"
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -47,6 +59,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {

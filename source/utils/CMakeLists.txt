@@ -47,7 +47,7 @@ add_library(fs_utils ${SOURCE_LIST} ${HEADER_LIST})
 add_library(Freesynd::Utils ALIAS fs_utils)
 
 # 1. Provide the header path
-set(CRCPP_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../includes/CRCpp")
+set(CRCPP_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../extern/CRCpp")
 include_directories(${CRCPP_INCLUDE_DIR})
 
 # 2. Create the missing "crcpp::crcpp" target that the engine is looking for

@@ -153,14 +153,20 @@ elseif (WIN32)
     # Place the exe and all accompanying files inside a FreeSynd/ subfolder,
     # mirroring the FreeSynd.app bundle layout on macOS.
     set_target_properties(freesynd PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../../build/windows"
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/../../../../build/windows/${FREESYND_ARCH}"
     )
 
     # Runtime DLLs live in the target sysroot bin, not the host compiler bin.
     # MINGW_PREFIX and MINGW_TRIPLE are defined in cmake/toolchain-mingw64.cmake.
     set(MINGW_RUNTIME_DIR "${MINGW_PREFIX}/${MINGW_TRIPLE}/bin")
     
-    set(FREESYND_ARCH "x64")
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        message(STATUS "Target is 64-bit")
+        set(FREESYND_ARCH x64)
+    else()
+        message(STATUS "Target is 32-bit")
+        set(FREESYND_ARCH x86)
+    endif()
     add_custom_command(TARGET freesynd POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy
                 "${CMAKE_SOURCE_DIR}/extern/sdl2/lib/${FREESYND_ARCH}/SDL2.dll"

@@ -84,12 +84,12 @@ set(SOURCE_LIST
 
 find_package (PNG REQUIRED)
 #find_package (CLI11 REQUIRED)
-#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../includes/CLI)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../extern/CLI)
 #find_package (utf8cpp REQUIRED)
-#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../includes/utf8cpp)
+#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../extern/utf8cpp)
 
 # --- CLI11 handling (Satisfying CLI11::CLI11) ---
-set(CLI11_INC "${CMAKE_CURRENT_SOURCE_DIR}/../includes/CLI")
+set(CLI11_INC "${CMAKE_CURRENT_SOURCE_DIR}/../extern/CLI")
 if(NOT TARGET CLI11::CLI11)
     add_library(CLI11::CLI11 INTERFACE IMPORTED)
     set_target_properties(CLI11::CLI11 PROPERTIES
@@ -98,7 +98,7 @@ if(NOT TARGET CLI11::CLI11)
 endif()
 
 # --- utf8cpp handling (Satisfying utf8cpp) ---
-set(UTF8_INC "${CMAKE_CURRENT_SOURCE_DIR}/../includes/utf8cpp")
+set(UTF8_INC "${CMAKE_CURRENT_SOURCE_DIR}/../extern/utf8cpp")
 if(NOT TARGET utf8cpp)
     add_library(utf8cpp INTERFACE IMPORTED)
     set_target_properties(utf8cpp PROPERTIES

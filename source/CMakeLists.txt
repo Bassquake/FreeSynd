@@ -38,11 +38,14 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.in ${CMAKE_CURRENT_SOURCE_DIR}/game/version.h)
 
 if (ANDROID)
+    # Make char/int compatible with ARM
+    add_compile_options(-fsigned-char)
+
     add_definitions(-DANDROID)
     find_library(log-lib log)
 
     set(lib_path "${CMAKE_SOURCE_DIR}/../platform/android/app/src/main/jniLibs/${ANDROID_ABI}")
-    set(inc_path "${CMAKE_SOURCE_DIR}/includes")
+    set(inc_path "${CMAKE_SOURCE_DIR}/extern")
 
     # 1. FORCE variables into the Cache so subdirectories (engine/) see them
     # These names must match what FindSDL2_image.cmake expects
@@ -69,9 +72,9 @@ if (ANDROID)
 
     # 2. Provide the include directories for the current scope
     include_directories(${inc_path})
-    include_directories(${inc_path}/SDL2/include)
-    include_directories(${inc_path}/SDL2_image/include)
-    include_directories(${inc_path}/SDL2_mixer/include)
+    include_directories(${inc_path}/sdl2/include)
+    include_directories(${inc_path}/sdl2_image/include)
+    include_directories(${inc_path}/sdl2_mixer/include)
     include_directories(${inc_path}/libpng/include)
 
     # 3. Define the Imported Targets for linking later
@@ -95,20 +98,59 @@ if (ANDROID)
 endif()
 
 if (WIN32)
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        message(STATUS "Target is 64-bit")
+        set(FREESYND_ARCH x64)
+    else()
+        message(STATUS "Target is 32-bit")
+        set(FREESYND_ARCH x86)
+    endif()
 	# Search the bundled libs directory when using MSVC.
-	set (CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH}
-		${CMAKE_SOURCE_DIR}/extern/sdl2/lib/${FREESYND_ARCH}
-        ${CMAKE_SOURCE_DIR}/extern/SDL2_mixer/lib/${FREESYND_ARCH}
-        ${CMAKE_SOURCE_DIR}/extern/SDL2_image/lib/${FREESYND_ARCH}
-	)
+	#set (CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH}
+	#	${CMAKE_SOURCE_DIR}/extern/sdl2/lib/${FREESYND_ARCH}/sdl2.lib
+    #    ${CMAKE_SOURCE_DIR}/extern/sdl2_mixer/lib/${FREESYND_ARCH}/sdl2_mixer.lib
+    #    ${CMAKE_SOURCE_DIR}/extern/sdl2_image/lib/${FREESYND_ARCH}/sdl2_image.lib
+	#)
 	set (CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH}
 		${CMAKE_SOURCE_DIR}/extern/sdl2/include
-        ${CMAKE_SOURCE_DIR}/extern/SDL2_mixer/include
-        ${CMAKE_SOURCE_DIR}/extern/SDL2_image/include        
+        ${CMAKE_SOURCE_DIR}/extern/sdl2_mixer/include
+        ${CMAKE_SOURCE_DIR}/extern/sdl2_image/include
 	)
-    # Adds CLI,CRCpp,UTF8cpp and zlib  headers
-    set(inc_extern_path "${CMAKE_SOURCE_DIR}")
-    include_directories(${inc_extern_path}/includes)
+    # Adds CLI,CRCpp,UTF8cpp and zlib headers
+    include_directories(${CMAKE_SOURCE_DIR}/extern)
+    #set(inc_extern_path "${CMAKE_SOURCE_DIR}/extern")
+    #Zlib
+    #include_directories(${inc_extern_path}/extern/zlib/include)
+    set (ZLIB_LIBRARY ${CMAKE_LIBRARY_PATH}
+        ${CMAKE_SOURCE_DIR}/extern/zlib/lib/${FREESYND_ARCH}/z.lib
+    )
+    set (ZLIB_INCLUDE_DIR ${CMAKE_INCLUDE_PATH}
+        ${CMAKE_SOURCE_DIR}/extern/zlib/include
+    )  
+    #Libpng
+    add_library(PNG::PNG STATIC IMPORTED)
+    set_target_properties(PNG::PNG PROPERTIES
+    IMPORTED_LOCATION "${CMAKE_SOURCE_DIR}/extern/libpng/lib/${FREESYND_ARCH}/libpng18.lib"
+    INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}/extern/libpng/include"
+    )
+    set (PNG_LIBRARY ${CMAKE_LIBRARY_PATH}
+        ${CMAKE_SOURCE_DIR}/extern/libpng/lib/${FREESYND_ARCH}/libpng18.lib
+    )
+    set (PNG_PNG_INCLUDE_DIR ${CMAKE_INCLUDE_PATH}
+        ${CMAKE_SOURCE_DIR}/extern/libpng/include
+    )
+    #SDL2
+    set (SDL2_LIBRARY ${CMAKE_LIBRARY_PATH}
+        ${CMAKE_SOURCE_DIR}/extern/sdl2/lib/${FREESYND_ARCH}/sdl2.lib
+    )
+    #SDL2_image
+    set (SDL2_IMAGE_LIBRARY ${CMAKE_LIBRARY_PATH}
+        ${CMAKE_SOURCE_DIR}/extern/sdl2_image/lib/${FREESYND_ARCH}/sdl2_image.lib
+    )
+    #SDL2_mixer
+    set (SDL2_MIXER_LIBRARY ${CMAKE_LIBRARY_PATH}
+        ${CMAKE_SOURCE_DIR}/extern/sdl2_mixer/lib/${FREESYND_ARCH}/sdl2_mixer.lib
+    )
 endif ()
         
 #################################

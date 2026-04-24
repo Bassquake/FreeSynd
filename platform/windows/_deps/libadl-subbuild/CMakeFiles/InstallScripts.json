@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"K:/Coding/FreeSynd/platform/windows/_deps/libadl-subbuild/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
