@@ -15,7 +15,7 @@ Project files are in:
 ```
 
 > [!IMPORTANT]
-> You need to supply the games asset files. Buy the game or find cd/disk of it. Syndicate Plus will **not** work, it has to be the original 1993 release without American Revolt (Check [eBay](https://www.ebay.co.uk/sch/i.html?_nkw=syndicate+bullfrog+-wars+-plus+-american+-revolt&_sacat=0&_odkw=syndicate+bullfrog+-wars+-plus&_osacat=0&_sop=15). The DOS version is probably easier to install and extract files from). Install the apk on your android, or go to build/windows where the exe and required dlls are already there if you've compiled, then copy out the data files you got from buying the game disk, into a folder called 'data' and copy that folder into the 'assets' folder. **ALL** folder and filenames needs to be lowercase (see below on how to easily do this). SDL2 and other libraries are already included in this project.
+> You need to supply the games asset files. Buy the game or find cd/disk of it. Syndicate Plus will **not** work, it has to be the original 1993 release without American Revolt (Check [eBay](https://www.ebay.co.uk/sch/i.html?_nkw=syndicate+bullfrog+-wars+-plus+-american+-revolt&_sacat=0&_odkw=syndicate+bullfrog+-wars+-plus&_osacat=0&_sop=15). The DOS version is probably easier to install and extract files from).
 
 ## Step-by-step
 ### Run on PC
