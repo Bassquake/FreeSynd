@@ -36,12 +36,11 @@ Project files are in:
 ### Run on Android phone
 This will work on any Android device above version 7.0 (Nougat). Also works on Quest for extra large screen gameplay (instructions for installing on Quest is further down)!!
 
-1. Plug in your phone.
-2. Download the FreeSynd apk for your device (arm64-v8a is for 64bit devices, arm-v7a is for 32bit).
-3. Copy that apk to your device Download folder and run it to install it. It won't properly run yet as we need to copy the game data files.
-4. Make a folder on your phone called **com.bassquake.freesynd** in the **sdcard/Android/data** and make another folder called **files** in that com.bassquake.freesynd folder.
-5. Now copy the data folder that contains all the game assets to **sdcard/Android/data/com.bassquake.freesynd/files**.
-6. You should see thr FreeSynd icon on your phone, tap to run!
+1. Download the FreeSynd apk for your device (arm64-v8a is for 64bit devices, arm-v7a is for 32bit).
+2. Copy that apk to your device Download folder and run it to install it. It won't properly run yet as we need to copy the game data files.
+3. Make a folder on your phone/tv/android device called **com.bassquake.freesynd** in the **sdcard/Android/data** and make another folder called **files** in that com.bassquake.freesynd folder.
+4. Now copy the data folder that contains all the game assets to **sdcard/Android/data/com.bassquake.freesynd/files**.
+5. You should see thr FreeSynd icon on your phone, tap to run!
 
 ### Run on Quest headset
 1. Plug your headset in via usb.
