@@ -31,12 +31,12 @@ fun copyAllAssetsToInternalStorage(context: Context, path: String = "") {
 
         if (!subContents.isNullOrEmpty()) {
             // It is a directory: Create it and recurse
-            val dir = File(context.filesDir, assetPath)
+            val dir = File(context.getExternalFilesDir(null), assetPath)
             if (!dir.exists()) dir.mkdirs()
             copyAllAssetsToInternalStorage(context, assetPath)
         } else {
             // It is a file: Copy it
-            val outputFile = File(context.filesDir, assetPath)
+            val outputFile = File(context.getExternalFilesDir(null), assetPath)
             if (!outputFile.exists()) {
                 copySingleAsset(context, assetPath, outputFile)
             }

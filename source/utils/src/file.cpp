@@ -232,7 +232,7 @@ static bool getResourcePath(fs::path& resourcePath) {
     #else
         // Under Android it's in the default files folder
         #ifdef __ANDROID__
-                const char* home = SDL_AndroidGetInternalStoragePath();
+                const char* home = SDL_AndroidGetExternalStoragePath();
                 if (home) userConfFolderPath_ = home;
         #else
                 const char* home = getenv("HOME");

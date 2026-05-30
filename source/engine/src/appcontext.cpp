@@ -72,45 +72,44 @@ void AppContext::readConfiguration(const std::string& iniFolder, const std::stri
  */
 void AppContext::readFreesyndIni(const std::string& iniFolder) {
 
-    #ifdef __ANDROID__
-        std::string actualFolder = iniFolder;
-
-            const char* base_path = SDL_AndroidGetInternalStoragePath();
-
-            if (base_path) {
-                // We want the FOLDER path, not the file path
-                actualFolder = std::string(base_path);
-            }
-    #endif
-
         ConfigFile freesyndIni;
 
     #ifdef __ANDROID__
-            if (!fs_utl::File::getFreesyndConf(actualFolder, freesyndIni)) {
-                throw InitializationFailedException(std::format("Failed to read configuration in folder: {}", iniFolder));
-            }
+        const char* base_path = SDL_AndroidGetExternalStoragePath();
+        if (!base_path) {
+            throw InitializationFailedException("External storage not available");
+        }
+        std::string actualFolder = std::string(base_path);
+        if (!fs_utl::File::getFreesyndConf(actualFolder, freesyndIni)) {
+            throw InitializationFailedException(std::format("Failed to read configuration in folder: {}", actualFolder));
+        }
+
+        time_for_click_ = freesyndIni.read("time_for_click", 80u);
+
+        std::string dataDir = actualFolder + "/data/";
+        fs_utl::File::setFreesyndDataFolder(dataDir);
+        fs_utl::File::setOriginalDataFolder("");
     #else
-            if (!fs_utl::File::getFreesyndConf(iniFolder, freesyndIni)) {
-                        throw InitializationFailedException(std::format("Failed to read configuration in folder: {}", iniFolder));
-                    }
+        if (!fs_utl::File::getFreesyndConf(iniFolder, freesyndIni)) {
+            throw InitializationFailedException(std::format("Failed to read configuration in folder: {}", iniFolder));
+        }
+
+        time_for_click_ = freesyndIni.read("time_for_click", 80u);
+
+        std::string freesynDataDir;
+        if (freesyndIni.readInto(freesynDataDir, "freesynd_data_dir")) {
+            fs_utl::File::setFreesyndDataFolder(freesynDataDir);
+        } else {
+            throw InitializationFailedException("Cannot find key freesynd_data_dir in config file freesynd.ini");
+        }
+
+        std::string originalDataDir;
+        if (freesyndIni.readInto(originalDataDir, "data_dir")) {
+            fs_utl::File::setOriginalDataFolder(originalDataDir);
+        } else {
+            throw InitializationFailedException("Cannot find key data_dir in config file freesynd.ini");
+        }
     #endif
-
-    time_for_click_ = freesyndIni.read("time_for_click", 80u);
-
-    std::string freesynDataDir;
-    if (freesyndIni.readInto(freesynDataDir, "freesynd_data_dir")) {
-        fs_utl::File::setFreesyndDataFolder(freesynDataDir);
-    } else {
-        throw InitializationFailedException("Cannot find key freesynd_data_dir in config file freesynd.ini");
-    }
-
-
-    std::string originalDataDir;
-    if (freesyndIni.readInto(originalDataDir, "data_dir")) {
-        fs_utl::File::setOriginalDataFolder(originalDataDir);
-    } else {
-        throw InitializationFailedException("Cannot find key data_dir in config file freesynd.ini");
-    }
 }
 
 /** \brief
