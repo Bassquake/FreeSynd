@@ -18,6 +18,10 @@ Project files are in:
 > You need to supply the games asset files. Buy the game or find cd/disk of it. Syndicate Plus will **not** work, it has to be the original 1993 release without American Revolt (Check [eBay](https://www.ebay.co.uk/sch/i.html?_nkw=syndicate+bullfrog+-wars+-plus+-american+-revolt&_sacat=0&_odkw=syndicate+bullfrog+-wars+-plus&_osacat=0&_sop=15). The DOS version is probably easier to install and extract files from).
 
 ## Step-by-step
+
+> [!IMPORTANT]
+> Make sure you know what your final device OS version and CPU is! For Android its usually arm64-v8a but some Android TVs are 32bit like mine was, so would be armeabi-v7a and has to be version 7.0 or above. For Windows the choice is x86 or x64, probably runs from XP upwards (not tested except Windows 10).
+
 ### Run on PC
 1. Install the original pc game from disk/download like normal on your pc. If it's DOS, you'll probably have to use DosBox or similar.
 2. Download the [lowercase.ps1](https://github.com/Bassquake/FreeSynd/blob/master/assets/lowercase.ps1) powershell script or find it in the assets folder of this project. Place the script into the folder where all game files are, should all be in a folder called **Data**.
@@ -29,6 +33,7 @@ Project files are in:
 5. Run the freesynd.exe!
 
 ### Run on Android phone
+This will work on any Android device above version 7.0 (Nougat). Also works on Quest for extra large screen gameplay!!
 
 
 ### Run on Quest headset
@@ -60,19 +65,6 @@ Project files are in:
 - Esc to quit or go back (Some devices seems to ignore this, so needs fixing).
 - Right mouse key to shoot manually (Not working properly yet).
 - Don't use middle click on mouse buttons as Android uses it to minimise the app.
-
-# Android
-This will work on any Android device above version 7.0 (Nougat). Also works on Quest for extra large screen gameplay!!
-
-If you downloaded the apk and just want to get started without compiling, install the apk as normal, then copy the game files into the data folder. You'll need some file management program on your pc such as the [SDK Platform-Tools](https://developer.android.com/tools/releases/platform-tools). Android is a bit of a bugbear when it comes to files and its permissions!
-
-# Windows
-I like to use cmake-gui from [cmake](https://cmake.org/download/) to create the Visual Studios project files. In "Where is the source code?" point to the \source folder, in "Where to build the binaries" point to \platform\windows\x64 or x86, then hit Configure, when done, hit Generate. You can now open the solution file in Visual Studio. I use v2022. You might have to repoint the library and includes folders if it complains they're missing. All headers and library files are in the source folder under 'extern'.
-
-For Windows, same as Android, add the game files into a folder called 'data' and copy to the 'assets' folder, compile as normal and the final exe and the required sdl2 dlls and game files will be in the build/windows folder. Just run the exe and go!
-
-> [!IMPORTANT]
-> Make sure you know what your final device OS version and CPU is! For Android its usually arm64-v8a but some Android TVs are 32bit like mine was, so would be armeabi-v7a and has to be version 7.0 or above. For Windows the choice is x86 or x64, probably runs from XP upwards (not tested except Windows 10).
 
 # To do
 - Add support for using touchscreen to move around.
