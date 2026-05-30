@@ -20,7 +20,7 @@ Project files are in:
 ## Step-by-step
 
 > [!IMPORTANT]
-> Make sure you know what your final device OS version and CPU is! For Android its usually arm64-v8a but some Android TVs are 32bit like mine was, so would be armeabi-v7a and has to be version 7.0 or above. For Windows the choice is x86 or x64, probably runs from XP upwards (not tested except Windows 10).
+> Make sure you know what your final device OS version and CPU is! For Android its usually arm64-v8a but some Android TVs are 32bit so would be armeabi-v7a. This project is compatible with Android version 7.0 or above. For Windows the choice is x86 or x64, probably runs from XP upwards (not tested except Windows 10 and 11).
 
 ### Run on PC
 1. Install the original pc game from disk/download like normal on your pc. If it's DOS, you'll probably have to use DosBox or similar.
