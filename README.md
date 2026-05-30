@@ -20,7 +20,7 @@ Project files are in:
 ## Step-by-step
 ### Run on PC
 1. Install the original pc game from disk/download like normal on your pc. If it's DOS, you'll probably have to use DosBox or similar.
-2. Download the [lowercase.ps1](https://github.com/Bassquake/FreeSynd/blob/main/assets/lowercase.ps1) powershell script or find it in the assets folder of this project. Place the script into the folder where all game files are, should all be in a folder called **Data**.
+2. Download the [lowercase.ps1](https://github.com/Bassquake/FreeSynd/blob/master/assets/lowercase.ps1) powershell script or find it in the assets folder of this project. Place the script into the folder where all game files are, should all be in a folder called **Data**.
 3. Run the script in Powershell (type **lowercase.ps1**) and all files will now be lowercase.
 4. The final file layout should look like so: ![File layout](https://github.com/Bassquake/FreeSynd/blob/main/captures/files_windows_x64.png)
 5. Run the freesynd.exe!
