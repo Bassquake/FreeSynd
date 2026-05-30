@@ -45,19 +45,16 @@ This will work on any Android device above version 7.0 (Nougat). Also works on Q
 ### Run on Quest headset
 1. Plug your headset in via usb.
 2. Download the FreeSynd release apk and install it with [SideQuest](https://sidequestvr.com/setup-howto) using the "Install APK file from folder on computer". (Your headset probably should be in [Developer](https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup/) mode already):
-
-![Screenshot of apk install](https://github.com/Bassquake/FreeSynd/blob/main/captures/sidequest_install.png)
-
 3. After install completes, you should see this in the "Currently installed apps":
-
-![Screenshot of apk location](https://github.com/Bassquake/FreeSynd/blob/main/captures/sidequest_installed.png)
+4. 
+![Screenshot of apk install](https://github.com/Bassquake/FreeSynd/blob/master/captures/quest-apk-install.png)
 
 4. Now still in SideQuest, go to "Manage files on the headset".
 5. Navigate to "sdcard/Android/data".
 6. Create a folder called "com.bassquake.freesynd" and inside that create a folder called "files" if there isn't one already.
 7. Copy all the game assets into that files folder. The layout should be like so on your device:
 
-![Screenshot of assets location](https://github.com/Bassquake/FreeSynd/blob/main/captures/sidequest_files.png)
+![Screenshot of assets location](https://github.com/Bassquake/FreeSynd/blob/master/captures/quest-data-install.png)
 
 8. Go to Unknown Sources on the headset and run FreeSynd!
 
