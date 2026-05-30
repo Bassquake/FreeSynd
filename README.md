@@ -2,7 +2,9 @@
 
 ![Screenshot of FreeSynd playing on various Android devices.](https://github.com/Bassquake/FreeSynd/blob/master/captures/Devices.jpg)
 
-Video of it in action on a Quest on [YouTube](https://youtu.be/KYbHk_xw-PY).
+Video of it in action on a Quest on [YouTube](https://youtu.be/3kpWlhadwsY).
+
+[![Watch the video](https://img.youtube.com/vi/3kpWlhadwsY/0.jpg)](https://youtu.be/3kpWlhadwsY)
 
 ## Notes
 This is based on the code from _bni_ over at [bni/freesynd](https://github.com/bni/freesynd). I've rejigged the project files and created and fixed some ARM specific errors for Android project too. I have added binaries for Android and Windows but they do not include the game files as its not allowed. See important note below about game assets and there are instructions on how to add them.
@@ -46,7 +48,7 @@ This will work on any Android device above version 7.0 (Nougat). Also works on Q
 1. Plug your headset in via usb.
 2. Download the FreeSynd release apk and install it with [SideQuest](https://sidequestvr.com/setup-howto) using the "Install APK file from folder on computer". (Your headset probably should be in [Developer](https://developers.meta.com/horizon/documentation/native/android/mobile-device-setup/) mode already):
 3. After install completes, you should see this in the "Currently installed apps":
-4. 
+
 ![Screenshot of apk install](https://github.com/Bassquake/FreeSynd/blob/master/captures/quest-apk-install.png)
 
 4. Now still in SideQuest, go to "Manage files on the headset".
@@ -56,7 +58,7 @@ This will work on any Android device above version 7.0 (Nougat). Also works on Q
 
 ![Screenshot of assets location](https://github.com/Bassquake/FreeSynd/blob/master/captures/quest-data-install.png)
 
-8. Go to Unknown Sources on the headset and run FreeSynd!
+8. Now go to Unknown Sources on the headset and run FreeSynd!
 
 > [!TIP]
 >Best way to play is connect a Bluetooth keyboard and mouse to your phone/Quest as I haven't added touchscreen scrolling yet. 
