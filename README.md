@@ -2,7 +2,7 @@
 
 ![Screenshot of FreeSynd playing on various Android devices.](https://github.com/Bassquake/FreeSynd/blob/master/captures/Devices.jpg)
 
-Video of it in action on a Quest on [YouTube](https://youtu.be/3kpWlhadwsY).
+Video of it in action on a Quest on [YouTube](https://youtu.be/3kpWlhadwsY) (watch with subtitles for details).
 
 [![Watch the video](https://img.youtube.com/vi/3kpWlhadwsY/0.jpg)](https://youtu.be/3kpWlhadwsY)
 
