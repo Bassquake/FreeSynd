@@ -9,9 +9,10 @@ This is based on the code from _bni_ over at [bni/freesynd](https://github.com/b
 
 Project files are in:
 ```
-\platform
-    \android <-- Open in this folder in Android Studio
-    \windows <-- Open the solution file in here for Visual Studio
+\FreeSynd
+    \platform
+        \android <-- Open in this folder in Android Studio
+        \windows <-- Open the solution file in here for Visual Studio
 ```
 
 > [!IMPORTANT]
