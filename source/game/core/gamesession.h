@@ -1,0 +1,300 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2010, 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *   Copyright (C) 2011  Joey Parrish  <joey.parrish@gmail.com>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#ifndef CORE_GAME_SESSION_H
+#define CORE_GAME_SESSION_H
+
+#include <string>
+#include <set>
+#include <random>
+
+#include "fs-utils/common.h"
+#include "fs-utils/misc/singleton.h"
+#include "fs-utils/io/portablefile.h"
+#include "fs-utils/io/formatversion.h"
+#include "fs-kernel/mgr/researchmanager.h"
+#include "fs-kernel/model/mission.h"
+#include "fs-kernel/model/time.h"
+
+
+
+enum Status_Pop {
+    STAT_VERY_HAPPY = 5,
+    STAT_HAPPY = 4,
+    STAT_CONTENT = 3,
+    STAT_UNHAPPY = 2,
+    STAT_DISCONTENT = 1,
+    STAT_REBEL = 0
+};
+
+enum Status_Blk {
+    BLK_UNAVAIL = 0,
+    BLK_AVAIL = 1,
+    BLK_FINISHED = 2,
+    BLK_REBEL = 3
+};
+
+struct Block {
+    const char *name;
+    /*! Default population number.*/
+    int defPopulation;
+    /*! Current population number.*/
+    int population;
+    int mis_id;
+    int tax;
+    /*!
+     * A temporary buffer to holds tax update.
+     * Real tax rate is updated with this buffer every day.
+     */
+    int addToTax;
+    /*!
+     * Status of the population satisfaction.
+     */
+    Status_Pop popStatus;
+    /*!
+     * Number of days before changing statuts.
+     */
+    int daysToNextStatus;
+    /*!
+     * Number of days elapsed for the current status
+     */
+    int daysStatusElapsed;
+    /**
+     * Tells whether the mission can be played or is finished.
+     */
+    Status_Blk status;
+    /*! The list of blocks available after finishing this mission.*/
+    const char *next;
+    /*! This is the index in the enemy syndicate array to get the color.
+     This field is used if status field is BLK_UNAVAIL or BLK_AVAIL.*/
+    uint8_t syndicate_owner;
+    /*! Informations level for briefing. */
+    unsigned char infoLevel;
+    /*! Details level for briefing. */
+    unsigned char enhanceLevel;
+    /*! The id to find the palette file hpal0X.dat*/
+    uint8_t paletteId;
+};
+
+/*!
+ * A holder for player data.
+ * This class stores all user data.
+ */
+class GameSession : public Singleton<GameSession> {
+public:
+    /*! Total number of missions. */
+    static const int NB_MISSION;
+    //! Maximum length for user's and company's name
+    static const int kNameMaxSize;
+
+    GameSession(fs_knl::WeaponManager *pWeaponManager, fs_knl::ModManager *pModManager);
+    ~GameSession();
+
+    /*!
+     * Resets all data.
+     * \returns True if reset has succeeded
+     */
+    bool reset();
+
+    /*!
+     * Returns the id of the user logo.
+     */
+    int getLogo() const {
+        return logo_;
+    }
+
+    /*!
+     * Sets the id of the user's logo.
+     */
+    void setLogo(int new_logo) {
+        logo_ = new_logo;
+    }
+
+    /*!
+     * Returns the logo colour.
+     */
+    int getLogoColour() const {
+        return logo_colour_;
+    }
+
+    /*!
+     * Sets the colour of the user's logo.
+     */
+    void setLogoColour(int colour);
+
+    /*!
+     * Returns the user's company name.
+     */
+    const char *getCompanyName() const {
+        return company_name_.c_str();
+    }
+
+    /*!
+     * Sets the user's company name.
+     */
+    void setCompanyName(const char *name) {
+        company_name_ = name;
+    }
+
+    /*!
+     * Returns the user's name.
+     */
+    const char *getUserName() const {
+        return username_.c_str();
+    }
+
+    /*!
+     * Sets the user's name.
+     */
+    void setUserName(const char *name) {
+        username_ = name;
+    }
+
+    /*!
+     * Returns the user's money.
+     */
+    uint32_t getMoney() const {
+        return money_;
+    }
+
+    /*!
+     * Sets the user's money.
+     */
+    void setMoney(uint32_t m) {
+        money_ = m;
+    }
+
+    void increaseMoney(uint32_t amount) {
+        money_ += amount;
+    }
+
+    void decreaseMoney(uint32_t amount) {
+        if (amount > money_) {
+            amount = money_;
+        }
+        money_ -= amount;
+    }
+
+    bool canAfford(uint32_t amount) {
+        return money_ >= amount;
+    }
+
+    fs_knl::ResearchManager &researchManager() {
+        return researchMan_;
+    }
+
+    //! Return the current time
+    fs_knl::GameTime currentTime() { return currentTime_; }
+
+    //! Returns the Block at the given index.
+    Block & getBlock(int index);
+
+    /*!
+     * Returns the index of the current selected region on map menu.
+     */
+    uint8_t getSelectedBlockId() { return selected_blck_; }
+
+    //! Convenience method to get the selected block
+    Block & getSelectedBlock();
+
+    /*!
+     * Sets the index of the current selected region on map menu.
+     * \param index The region index (between 0 and 49 inclusive)
+     */
+    void setSelectedBlockId(uint8_t index) { if (index < 50) selected_blck_ = index; }
+
+    //! Returns the block's color depending on who owns it
+    uint8_t get_owner_color(Block & blk);
+
+    //! Update state when finishing a mission
+    void mark_selected_block_completed();
+
+    //! Cheat method to enable all missions
+    void cheatEnableAllMission();
+
+    //! Cheat method to replay finished mission
+    void cheatReplayMission() { replay_mission_ = true; }
+
+    //! Tells if cheat mode Replay missions is on
+    bool canReplayMission() { return replay_mission_; }
+
+    //! Adds the given amount to the selected block tax rate.
+    bool addToTaxRate(int amount);
+
+    //! Returns a revenue for a given population and rate.
+    int getTaxRevenue(int population, int rate);
+
+    //! Do all time related updates
+    bool addElapsedTime(uint32_t elapsed) { return currentTime_.updateTime(elapsed); }
+    //! Update population, status and returns money
+    uint32_t updateCountries();
+
+    std::mt19937 & getRandomGenerator() { return rng_; }
+    uint8_t getRandomEnemySyndicateId();
+
+    //! Save instance to file
+    bool saveToFile(fs_utl::PortableFile &file);
+    //! Load instance from file
+    bool loadFromFile(fs_utl::PortableFile &infile, const fs_utl::FormatVersion& v);
+
+private:
+    //! Destroy GameSession resources
+    void destroy();
+    int getDaysBeforeChange(Status_Pop status, int tax);
+
+    //! Returns new population number
+    int getNewPopulation(const int defaultPop, int currPop);
+
+private:
+    int logo_;
+    //! the ID of the color for the logo
+    int logo_colour_;
+    uint32_t money_;
+    std::string company_name_;
+    std::string username_;
+    /*! Stores the current time (hours, day and year). */
+    fs_knl::GameTime currentTime_;
+
+    /*!
+     * Stores the index of the current selected
+     * region on the mission map.
+     */
+    uint8_t selected_blck_;
+
+    /*! Cheat flag to tell that all missions are playable.*/
+    bool enable_all_mis_;
+    /*! Cheat flag to enable replay of finished missions. */
+    bool replay_mission_;
+    /*! Manager for researches. */
+    fs_knl::ResearchManager researchMan_;
+
+    //! Random generator
+    std::mt19937 rng_;
+    /*!
+     * Distribution for choosing a random syndicate.
+     * NOTE : Using int as param cause on windows it does not allow uint8_t.
+     */
+    std::uniform_int_distribution<int> syndicateDist_;
+};
+
+#define g_Session   GameSession::singleton()
+
+#endif //CORE_GAME_SESSION_H

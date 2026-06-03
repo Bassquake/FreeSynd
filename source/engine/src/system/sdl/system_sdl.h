@@ -1,0 +1,202 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2010, 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#ifndef SYSTEM_SDL_H
+#define SYSTEM_SDL_H
+
+#include <SDL.h>
+
+#include "fs-engine/system/system.h"
+#include "fs-engine/io/keys.h"
+
+namespace fs_eng {
+
+/*! \brief Implementation of the System interface for SDL.
+ *
+ * This class implements the System interface based on the SDL2 library.
+ *  - Display
+ *    Every object in the game is drawn on a simple uint8 array in the Screen
+ *    class. Then in SystemSDL::updateScreen(), we copy this array into a
+ *    Uint32 array that matches the display format and this array is then copied
+ *    to an SDL Texture. This texture is then copied on the back buffer before
+ *    presenting the scree.
+ *  - Mouse Cursor
+ *    In order to display colorfull cursors, the SDL cursor display is disabled
+ *    and is manually managed by this class with a SDL_Texture.
+ *    A surface is loaded with a collection of sprites, and every time the
+ *    mouse moves, the corresponding sprite is blit on screen at the
+ *    mouse coordinates.\n
+ *    If the SDLSystem fails to load the cursor surface, the default SDL cursor
+ *    will be used, but not change will affect the cursor, except hide/show.
+ */
+class SystemSDL : public System {
+public:
+    SystemSDL();
+    ~SystemSDL();
+
+    //! Initialize the SDL resources
+    void initialize(bool fullscreen) override;
+    //! @copydoc System::showError()
+    void showError(const char *errorMsg) override;
+    bool clearScreen() override;
+    //! Render back buffer to the screen
+    void updateScreen() override;
+    //! @copydoc System::resetRenderTarget()
+    bool resetRenderTarget() override;
+    //! @copydoc System::setViewport()
+    bool setViewport(int x, int y, int width, int height) override;
+    //! @copydoc System::resetViewport()
+    bool resetViewport() override;
+    //! @copydoc System::setNativeAspectRatio()
+    void setNativeAspectRatio(bool native) override;
+    //! @copydoc System::getGameHeight()
+    int getGameHeight() const override { return gameHeight_; }
+    //! @copydoc System::getGameWidth()
+    int getGameWidth() const override { return gameWidth_; }
+    
+    //! Pumps an event from the event queue
+    bool pumpEvents(FS_Event &evtOut) override;
+
+    void delay(uint32_t msec) override;
+    uint32_t getTicks() override;
+
+    void drawPoint (Point2D start, fs_eng::FSColor color) override;
+    void drawVLine(Point2D start, int length, fs_eng::FSColor color) override;
+    void drawHLine(Point2D start, int length, fs_eng::FSColor color) override;
+    void drawDashedVLine(Point2D start, int length, int dashLength, int dashOffset, fs_eng::FSColor color) override;
+    void drawDashedHLine(Point2D start, int length, int dashLength, int dashOffset, fs_eng::FSColor color) override;
+
+    void drawLine(Point2D start, Point2D end, fs_eng::FSColor color) override;
+    void drawRect(Point2D pos, int width, int height, fs_eng::FSColor color) override;
+    void drawFillRect(Point2D pos, int width, int height, fs_eng::FSColor color) override;
+
+    //! Returns the mouse pointer coordinates
+    uint32_t getMousePos(Point2D &point) override;
+
+    void hideCursor() override;
+    void showCursor() override;
+    void warpMouseToCenter() override;
+    void setRelativeMouseMode(bool enabled) override;
+    void warpMouseTo(int gameX, int gameY) override;
+    void getLastMouseRelDelta(float &xrel, float &yrel) const override;
+    void useMenuCursor() override;
+    void usePointerCursor() override;
+    void usePointerYellowCursor() override;
+    void useTargetCursor() override;
+    void useTargetRedCursor() override;
+    void usePickupCursor() override;
+    int getKeyModState() override {
+        return keyModState_;
+    }
+
+    bool isKeyModStatePressed(const int keyMod) override {
+        return (keyModState_ & keyMod) != 0;
+    }
+
+    bool isKeyDown(fs_eng::FS_KeyCode key) const override;
+
+    //! Call this method to activate the text event
+    void startReceiveText() override;
+    //! Call this method to deactivate the text event
+    void stopReceiveText() override;
+
+    std::unique_ptr<FSTexture> createTexture() override;
+
+    //! @copydoc System::getLanguageFromSystem()
+    fs_eng::FS_Lang getLanguageFromSystem() override;
+    // DECLARATION FOR HANDLING WINDOW ISSUES
+    void handleRenderDeviceReset();
+
+protected:
+    //! Creates a SDL window either for fullscreen or not
+    SDL_Window * createWindow(bool fullscreen);
+    //! Loads the graphic file that contains the cursor sprites.
+    bool loadCursorSprites();
+
+    //! Sets the key arguments with some key codes
+    void fillKeyEvent(SDL_Keysym sym, FS_Event &evtOut);
+    //! Compute the centered 4:3 integer-scaled destination rect for the game texture
+    void calculateGameViewport();
+    //! (Re)create the offscreen game texture at 640 x gameHeight_
+    void recreateGameTexture();
+    //! Transform a window-space point to game coordinates
+    Point2D windowToGame(int x, int y) const;
+
+protected:
+    /*! A constant that holds the cursor icon width and height.*/
+    static const int kCursorWidth;
+    /*! Cursor visibility.*/
+    bool cursor_visible_;
+    /*! Cursor screen coordinates (in game space). */
+    int32_t cursor_x_;
+    /*! Cursor screen coordinates (in game space). */
+    int32_t cursor_y_;
+    /*! Current cursor hotspot.*/
+    int cursor_hs_x_;
+    /*! Current cursor hotspot.*/
+    int cursor_hs_y_;
+
+    //! The main window
+    SDL_Window *pWindow_;
+    //! The renderer is necessary to manipulate SDL_Texture and use graphic acceleration
+    SDL_Renderer *pRenderer_;
+    //! Offscreen render target: all game rendering goes here (640x400)
+    SDL_Texture *pGameTexture_;
+    //! Destination rect on screen for the game texture (integer-scaled, centered)
+    SDL_Rect viewportRect_;
+    //! When true use native 8:5 scaling (gameplay); when false use 4:3 (menus)
+    bool nativeAspectRatio_;
+    //! Current game texture height: kScreenHeight in menu mode, dynamic in gameplay
+    int gameHeight_;
+    //! Current game texture width: kScreenWidth in menu mode, dynamic in gameplay
+    int gameWidth_;
+
+    /*!
+     * A texture that holds all cursors images.
+     */
+    SDL_Texture *pCursorTexture_;
+    /*! A rect that identify the part of
+     * the cursor surface for the current cursor.*/
+    SDL_Rect cursor_rect_;
+    /*! A flag that tells that cursor must be updated because
+     the mouse has moved or the cursor has changed.*/
+    bool update_cursor_;
+    /*!
+     * This field is a bit buffer storing the state of modifier buttons.
+     * When a bit is set, that means a button is pressed.
+     * See KeyMod enumeration to know all modifier buttons.
+     */
+    int keyModState_;
+    //! Last relative mouse delta scaled to game coords (float, no truncation)
+    float lastRelX_ = 0.0f;
+    float lastRelY_ = 0.0f;
+    // Double-tap → right-click on touchscreens
+    uint32_t lastTouchUpTime_ = 0;
+    int lastTouchUpWinX_ = -1;
+    int lastTouchUpWinY_ = -1;
+    bool rightClickMode_ = false;
+};
+
+}
+
+#endif

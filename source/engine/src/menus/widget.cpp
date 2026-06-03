@@ -1,0 +1,771 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2011, 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *   Copyright (C) 2011  Joey Parrish  <joey.parrish@gmail.com>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#include "fs-engine/menus/widget.h"
+
+#include <stdarg.h>
+
+#include "utf8.h"
+
+#include "fs-utils/log/log.h"
+#include "fs-engine/menus/menu.h"
+#include "fs-engine/menus/menumanager.h"
+#include "fs-engine/appcontext.h"
+
+namespace fs_eng {
+
+int Widget::widgetCnt = 0;
+
+void Widget::setLocation(int x, int y) {
+    x_ = x;
+    y_ = y;
+}
+
+void Widget::setVisible(bool visible) {
+    if (visible != visible_) {
+        visible_ = visible;
+    }
+}
+
+MenuText::MenuText(Menu *peer, int x, int y, const char *text, MenuFont *pFont,
+                   bool highlighted, bool visible):
+            Widget(peer, x, y, 0, 0, visible)
+{
+        highlighted_ = highlighted;
+        centered_ = false;
+        anchorX_ = x;
+        anchorY_ = y;
+        pFont_ = pFont;
+        // Height is fixed by font size
+        height_ = pFont->textHeight();
+
+        updateText(text, true);
+}
+
+MenuText::MenuText(Menu *peer, int x, int y, int width, const char *text, MenuFont *pFont,
+                   bool highlighted, bool visible, bool centered):
+            Widget(peer, x, y, width, 0, visible)
+{
+
+    highlighted_ = highlighted;
+    centered_ = centered;
+    anchorX_ = x;
+    anchorY_ = y;
+    pFont_ = pFont;
+    // Height is fixed by font size
+    height_ = pFont->textHeight();
+
+    updateText(text, true);
+}
+
+/**
+ *
+ * \param text const char*
+ * \param resolve bool True to look in the language file
+ * \return void
+ *
+ */
+void MenuText::updateText(const char *text, bool resolve) {
+    std::string lbl(text);
+    // Find if string starts with '#' caracter
+    if (resolve && lbl.find_first_of('#') == 0) {
+        // Erase the # caracter
+        lbl.erase(0, 1);
+        // and looks for the message in the langage file
+        g_Ctx.getMessage(lbl.c_str(), lbl);
+    }
+    text_ = lbl;
+
+    int textWidth = pFont_->textWidth(text_);
+    if (textWidth > width_) {
+        width_ = textWidth;
+    }
+
+    if (centered_) {
+        anchorX_ = (x_ + x_ + width_) / 2  - textWidth / 2;
+    }
+}
+
+/*!
+ * Modify the MenuText text.
+ * If the given text starts with a '#' and if resolve param is true, the remaining
+ * text identifies a key in the language file.
+ * \param text to set
+ * \param resolve
+ */
+void MenuText::setText(const char *text, bool resolve) {
+    updateText(text, resolve);
+}
+
+/*!
+ * Modify the MenuText text.
+ * The given text can be a formated string.
+ * If it starts with a '#', the remaining
+ * text identifies a key in the language file.
+ * \param format message format
+ */
+void MenuText::setTextFormated(const char * format, ...) {
+
+    char tmp[200];
+    va_list list;
+
+    std::string lbl(format);
+    // Find if string starts with '#' caracter
+    if (lbl.find_first_of('#') == 0) {
+        // Erase the # caracter
+        lbl.erase(0, 1);
+        // and looks for the message in the langage file
+        g_Ctx.getMessage(lbl.c_str(), lbl);
+    }
+
+    va_start(list, format);
+    vsprintf(tmp, lbl.c_str(), list);
+    va_end(list);
+
+    setText(tmp, false);
+}
+
+void MenuText::setLocation(int x, int y) {
+    int dx = x - x_;
+    int dy = y - y_;
+    x_ = x;
+    y_ = y;
+    anchorX_ += dx;
+    anchorY_ += dy;
+}
+
+void MenuText::setHighlighted(bool highlighted) {
+    highlighted_ = highlighted;
+}
+
+/*!
+ * Draw the widget at the current position.
+ * Actually, only a text is drawn (see Font). The borders are
+ * already drawn on the background image.
+ */
+void MenuText::draw() {
+    pFont_->drawText(anchorX_, anchorY_, text_, highlighted_);
+}
+
+bool ActionWidget::isMouseOver(Point2D point) {
+
+    return (point.x > x_  &&
+            point.x < x_ + width_ &&
+            point.y >= y_ &&
+            point.y < y_ + height_);
+}
+
+void ActionWidget::setWidgetEnabled(bool enabled) {
+    if (enabled != enabled_) {
+        enabled_ = enabled;
+    }
+}
+
+Option::Option(Menu *peer, int x, int y, int width, int height, const char *text,
+               MenuFont *pFont, int to, bool visible, bool centered, int darkWidgetId,
+               int lightWidgetId)
+        : ActionWidget(peer, x, y, width, height, visible),
+          text_(peer, x, y, width - 4, text, pFont, false, true, centered) {
+    to_ = to;
+    darkWidget_ = NULL;
+    lightWidget_ = NULL;
+    hotKeyCode_ = kKeyCode_Unknown;
+
+    // If button label contains a '&' character, then the next
+    // character is the acceleration key for that button
+    // only 'a-zA-Z' characters are available
+    std::string newText;
+    std::string::iterator b = text_.getText().begin();
+    std::string::iterator e = text_.getText().end();
+
+    bool foundAmp = false;
+    while ( b != e ) {
+        try {
+            auto codePoint = utf8::next(b,e);
+            if (codePoint == 0x0026) {
+                if (!foundAmp) {
+                    // found '&' : skip it
+                    foundAmp = true;
+                    continue;
+                }
+            } else if (foundAmp && hotKeyCode_ == kKeyCode_Unknown) {
+                // if keyCode is a letter
+                if ((codePoint >= 0x0041 && codePoint <= 0x005A) || (codePoint >= 0x0061 && codePoint <= 0x007A)) {
+                    // Only take capital letter
+                    if (codePoint >= 0x0061) {
+                        codePoint -= 32;
+                    }
+                    hotKeyCode_ = static_cast < FS_KeyCode >(kKeyCode_A + (codePoint - 0x0041));
+                }
+            }
+            // copy char
+            utf8::append(codePoint, newText);
+        } catch (const utf8::invalid_utf8& exc) {
+            LOG(Log::k_FLG_IO, "Option", "Option", ("Invalid utf8 character in %s", text_.getText().c_str()));
+            continue;
+        }
+    }
+    text_.setText(newText.c_str());
+
+    //////////////////////////
+
+
+
+    // Position the button text in the middle of height
+    // add 1 pixel to height to compensate lost of division
+    text_.setLocation(text_.getX(), y_ + (height_ / 2) - (text_.getHeight() / 2) + 1);
+
+    if (darkWidgetId != 0) {
+        darkWidget_ = peer->menuSprites().sprite(darkWidgetId);
+        lightWidget_ = peer->menuSprites().sprite(lightWidgetId);
+        // there's a small pad between heading widget ant text
+        text_.setLocation(text_.getX() + darkWidget_->width() * 2 + 8, text_.getY());
+    }
+}
+
+Option::~Option() {
+    to_ = 0;
+}
+/*!
+ * Draw the widget at the current position.
+ * Actually, only a text is drawn (see Font). The borders are
+ * already drawn on the background image.
+ */
+void Option::draw() {
+    int x = x_;
+
+    if (text_.isHighlighted() && lightWidget_ != NULL) {
+        getPeer()->menuSprites().drawSprite(lightWidget_->id(), x, y_, false, true);
+    } else if (darkWidget_ != NULL) {
+        getPeer()->menuSprites().drawSprite(darkWidget_->id(), x, y_, false, true);
+    }
+
+    text_.draw();
+}
+
+/*!
+ * Calls Menu::handleAction() then redirect to
+ * another menu if the field "to" has been set.
+ */
+void Option::executeAction() {
+    if (getPeer() && this->isVisible()) {
+        getPeer()->handleAction({getId(), NULL});
+    }
+
+    if (to_ != Menu::kMenuIdNoMenu) {
+        getPeer()->getMenuManager()->gotoMenu(to_);
+        return;
+    }
+}
+
+void Option::handleFocusGained() {
+    text_.setHighlighted(true);
+}
+void Option::handleFocusLost() {
+    text_.setHighlighted(false);
+}
+
+void Option::handleMouseDown([[maybe_unused]] Point2D point, [[maybe_unused]] int button) {
+    executeAction();
+}
+
+Group::~Group() {
+    actions_.clear();
+}
+
+void Group::addButton(ToggleAction *pAction) {
+    actions_.push_back(pAction);
+}
+
+void Group::selectButton(int id) {
+    for (std::list < ToggleAction * >::iterator it = actions_.begin();
+         it != actions_.end(); it++) {
+        ToggleAction *pAction = *it;
+
+        if (pAction->getId() != id ) {
+            pAction->handleSelectionLost();
+        } else
+            pAction->handleSelectionAquire();
+    }
+}
+
+ToggleAction::ToggleAction(Menu *peer, int x, int y, int width, int height,
+                            const char *text, MenuFont *pFont, bool selected, Group *pGroup)
+: Option(peer, x, y, width, height, text, pFont, -1, true) {
+    group_ = pGroup;
+    setSelected(selected);
+}
+
+void ToggleAction::setSelected(bool isSelected) {
+    selected_ = isSelected;
+    // When a ToggleAction is selected it lighted
+    text_.setHighlighted(selected_);
+}
+
+void ToggleAction::executeAction() {
+    // Deselect all other buttons of the group and select current
+    group_->selectButton(getId());
+    Option::executeAction();
+}
+
+void ToggleAction::handleFocusLost() {
+    // Toggle buttons get dark only
+    // if they are not pushed
+    if (!selected_) {
+        Option::handleFocusLost();
+    }
+}
+
+void ToggleAction::handleSelectionLost() {
+    setSelected(false);
+}
+
+void ToggleAction::handleSelectionAquire() {
+    setSelected(true);
+}
+
+ListBox::ListBox(Menu *peer, int x, int y, int width, int height, MenuFont *pFont, bool visible) :
+        ActionWidget(peer, x, y, width, height, visible) {
+    focusedLine_ = -1;
+    pModel_ = NULL;
+    pFont_ = pFont;
+}
+
+ListBox::~ListBox() {
+    labels_.clear();
+
+    if (pModel_) {
+        pModel_->removeModelListener(this);
+    }
+}
+
+void ListBox::setModel(SequenceModel *pModel) {
+    pModel_ = pModel;
+    labels_.clear();
+    pModel_->getLabels(labels_);
+    pModel_->addModelListener(this);
+}
+
+void ListBox::handleModelChanged() {
+    labels_.clear();
+    pModel_->getLabels(labels_);
+}
+
+//! Draw the widget on screen
+void ListBox::draw() {
+    int i=0;
+    for (std::list < std::string >::iterator it = labels_.begin();
+         it != labels_.end(); it++, i++) {
+             pFont_->drawText(getX(), getY() + i * 12, (*it), focusedLine_ == i);
+    }
+}
+
+void ListBox::handleMouseMotion(Point2D point, [[maybe_unused]] uint32_t state) {
+
+    if (pModel_) {
+        // Gets the line pointed by the mouse
+        unsigned int i = (point.y - getY()) / 12;
+        if (i < pModel_->size()) {
+            if (pModel_->getElement(i)) {
+                // If line contains something, highlight it
+                if (focusedLine_ != (int)i) {
+                    focusedLine_ = i;
+                }
+            } else {
+                if (focusedLine_ != -1) {
+                    focusedLine_ = -1;
+                }
+            }
+        }  else if (focusedLine_ != -1) {
+            // A line was highlighted but not anymore
+            focusedLine_ = -1;
+        }
+    }
+}
+
+void ListBox::handleMouseDown([[maybe_unused]] Point2D point, [[maybe_unused]] int button) {
+    if (focusedLine_ != -1 && pModel_) {
+        if (getPeer()) {
+            // call the peer handleAction method giving the index of pressed line.
+            std::pair<int, void *> tuple = std::make_pair(focusedLine_, pModel_->getElement(focusedLine_));
+            getPeer()->handleAction({ getId(), &tuple });
+
+        }
+    }
+}
+
+void ListBox::handleFocusLost() {
+    focusedLine_ = -1;
+}
+
+const int TeamListBox::LINE_OFFSET = 20;
+
+TeamListBox::TeamListBox(Menu *peer, int x, int y, int width, int height, MenuFont *pFont, bool visible) :
+        ListBox(peer, x, y, width, height, pFont, visible) {
+    pTitle_ = new MenuText(peer, x, y, width, "#SELECT_CRYO_TITLE", pFont, true);
+    lUnderline_ = pFont_->textWidth(pTitle_->getText());
+    xUnderline_ = (x + x + width) / 2  - lUnderline_ / 2;
+    yUnderline_ = y + pFont_->textHeight();
+    yOrigin_ = yUnderline_ + 2;
+    for (int i=0; i<4; i++) {
+        squadLines_[i] = i;
+    }
+
+    g_Ctx.getMessage("MENU_LB_EMPTY", emptyLbl_);
+}
+
+TeamListBox::~TeamListBox() {
+    delete pTitle_;
+    pTitle_ = NULL;
+}
+
+//! Draw the widget on screen
+void TeamListBox::draw() {
+
+    pTitle_->draw();
+    //g_Screen.drawRect(xUnderline_, yUnderline_, lUnderline_, 2, 252);
+    g_System.drawFillRect({xUnderline_, yUnderline_}, lUnderline_, 2, getPeer()->getMenuManager()->kMenuColorLightGreen);
+
+    int i=0;
+    for (std::list < std::string >::iterator it = labels_.begin();
+         it != labels_.end(); it++, i++) {
+             if ((*it).size() != 0) {
+                 for (int ln=0; ln<4; ln++) {
+                     if (squadLines_[ln] ==  i) {
+                        char tmp[5];
+                        sprintf(tmp, "%d", ln+1);
+                        pFont_->drawText(getX(), yOrigin_ + i * 12, tmp, focusedLine_ == i);
+                        break;
+                     }
+                 }
+                 pFont_->drawText(getX() + LINE_OFFSET, yOrigin_ + i * 12, (*it), focusedLine_ == i);
+             } else {
+                 pFont_->drawText(getX() + LINE_OFFSET, yOrigin_ + i * 12, emptyLbl_, focusedLine_ == i);
+             }
+    }
+}
+
+void TeamListBox::handleMouseMotion(Point2D point, [[maybe_unused]] uint32_t state) {
+
+    if (pModel_) {
+        // Gets the line pointed by the mouse
+        int i = (point.y - yOrigin_) / 12;
+        if (i >= 0 && i < (int) pModel_->size()) {
+            if (pModel_->getElement(i)) {
+                // If line contains something, highlight it
+                if (focusedLine_ != i) {
+                    focusedLine_ = i;
+                }
+            } else {
+                if (focusedLine_ != -1) {
+                    focusedLine_ = -1;
+                }
+            }
+        }  else if (focusedLine_ != -1) {
+            // A line was highlighted but not anymore
+            focusedLine_ = -1;
+        }
+    }
+}
+
+void TeamListBox::setSquadLine(size_t squadSlot, int line) {
+    if (pModel_ && line < pModel_->size() && squadSlot < 4) {
+        squadLines_[squadSlot] = line;
+    }
+}
+
+// By default there's no empty label
+std::string TextField::emptyLbl_ = "";
+
+TextField::TextField(Menu *peer, int x, int y, int width, int height,
+                     MenuFont *pFont, size_t maxSize, bool displayEmpty,
+                     bool visible)
+        : ActionWidget(peer, x, y, width, height, visible),
+          text_(peer, x, y, width, "", pFont, false, visible, false) {
+
+    // Position the button text in the middle of height
+    // add 1 pixel to height to compensate lost of division
+    text_.setLocation(text_.getX(), y_ + (height_ / 2) - (text_.getHeight() / 2) + 1);
+    isDisplayEmpty_ = displayEmpty;
+    caretPosition_ = 0;
+    caretScreenPos_.y = text_.getY() + text_.getFont()->textHeight(true);
+    getPeer()->getMenuManager()->getColorFromMenuPalette(fs_eng::kMenuPaletteColorLightGreen, caretColor_);
+    isInEdition_ = false;
+    maxSize_ = maxSize;
+}
+
+TextField::~TextField() {
+}
+
+/*!
+ * Draw the widget at the current position.
+ * Actually, only a text is drawn (see Font). The borders are
+ * already drawn on the background image.
+ */
+void TextField::draw() {
+    if (!isInEdition_ && isDisplayEmpty_ && text_.getText().size() == 0) {
+        text_.getFont()->drawText(getX(), text_.getY(), emptyLbl_, false);
+    } else {
+        text_.draw();
+        if (isInEdition_) {
+            drawCaret();
+        }
+    }
+}
+
+void TextField::handleCaptureGained() {
+    isInEdition_ = true;
+    // by default set the caret at the end of the text
+    caretPosition_ = utf8::distance(text_.getText().begin(), text_.getText().end());
+
+    g_System.startReceiveText();
+
+    setHighlighted(true);
+}
+
+void TextField::handleCaptureLost() {
+    g_System.stopReceiveText();
+
+    isInEdition_ = false;
+    caretPosition_ = 0;
+    setHighlighted(false);
+}
+
+/*!
+ * Erase one character before caret.
+ */
+void TextField::handleBackSpace() {
+    // Erase character only if caret is not on the first character
+    if (caretPosition_ > 0) {
+        std::string newText;
+        std::string::iterator b = text_.getText().begin();
+        std::string::iterator e = text_.getText().end();
+
+        size_t currentPos = 0;
+        while ( b != e ) {
+            try {
+                auto codePoint = utf8::next(b,e);
+
+                if (currentPos != caretPosition_ - 1) {
+                    utf8::append(codePoint, newText);
+                }
+                currentPos++;
+
+            } catch (const utf8::invalid_utf8& exc) {
+                LOG(Log::k_FLG_IO, "Option", "Option", ("Invalid utf8 character in %s", text_.getText().c_str()));
+                continue;
+            }
+        }
+        setText(newText.c_str());
+        caretPosition_--;
+    }
+}
+
+/*!
+ * Erase one character after caret.
+ */
+void TextField::handleDelete() {
+    std::string newText;
+    std::string::iterator b = text_.getText().begin();
+    std::string::iterator e = text_.getText().end();
+
+    size_t currentPos = 0;
+    while ( b != e ) {
+        try {
+            auto codePoint = utf8::next(b,e);
+
+            if (currentPos != caretPosition_) {
+                utf8::append(codePoint, newText);
+            }
+            currentPos++;
+
+        } catch (const utf8::invalid_utf8& exc) {
+            LOG(Log::k_FLG_IO, "Option", "Option", ("Invalid utf8 character in %s", text_.getText().c_str()));
+            continue;
+        }
+    }
+    setText(newText.c_str());
+}
+
+// Insert new character at caret position
+void TextField::handleCharacter(FS_Key key) {
+    // Key can be displayed -> insert it at the caret position
+    std::string newText;
+    std::string::iterator b = text_.getText().begin();
+    std::string::iterator e = text_.getText().end();
+
+    size_t currentPos = 0;
+    // Add all characters before the caret
+    while ( b != e ) {
+        try {
+            if (currentPos == caretPosition_) {
+                break;
+            }
+
+            auto codePoint = utf8::next(b,e);
+            utf8::append(codePoint, newText);
+            currentPos++;
+
+        } catch (const utf8::invalid_utf8& exc) {
+            LOG(Log::k_FLG_IO, "Option", "Option", ("Invalid utf8 character in %s", text_.getText().c_str()));
+            continue;
+        }
+    }
+    // Add the new character
+    utf8::append(key.codePoint, newText);
+    currentPos++;
+
+    while ( b != e ) {
+        try {
+            auto codePoint = utf8::next(b,e);
+            utf8::append(codePoint, newText);
+            currentPos++;
+        } catch (const utf8::invalid_utf8& exc) {
+            LOG(Log::k_FLG_IO, "Option", "Option", ("Invalid utf8 character in %s", text_.getText().c_str()));
+            continue;
+        }
+    }
+
+    if (currentPos <= maxSize_) {
+        setText(newText.c_str());
+        caretPosition_++;
+    }
+}
+
+bool TextField::handleKey(FS_Key key) {
+    bool needRedraw = false;
+    if (key.keyCode == kKeyCode_Left) {
+        // Move caret to the left until start of the text
+        if (caretPosition_ > 0) {
+            caretPosition_--;
+            needRedraw = true;
+        }
+    } else if (key.keyCode == kKeyCode_Right) {
+        auto dist = utf8::distance(text_.getText().begin(), text_.getText().end());
+        // Move caret to the right until the end of the text
+        if (caretPosition_ < dist) {
+            caretPosition_++;
+            needRedraw = true;
+        }
+    } else if (key.keyCode == kKeyCode_Backspace) {
+        handleBackSpace();
+    } else if (key.keyCode == kKeyCode_Delete) {
+        handleDelete();
+    } else if (key.keyCode == kKeyCode_Home) {
+        caretPosition_ = 0;
+        needRedraw = true;
+    } else if (key.keyCode == kKeyCode_End) {
+        caretPosition_ = utf8::distance(text_.getText().begin(), text_.getText().end());
+        needRedraw = true;
+    } else if (key.keyCode == kKeyCode_Text) {
+        if (text_.getFont()->isPrintable(key.codePoint)) {
+            handleCharacter(key);
+        }
+    } else {
+        return false;
+    }
+
+    return true;
+}
+
+void TextField::handleMouseDown(Point2D point, [[maybe_unused]] int button) {
+    getPeer()->captureInputBy(this);
+
+    size_t nbCdpt = utf8::distance(text_.getText().begin(), text_.getText().end());
+
+    // Size in pixel of the text
+    int sizePxl = text_.getFont()->textWidth(text_.getText());
+
+    // computes caret position
+    if (point.x > sizePxl + getX()) {
+        // Clicked after the text so caret is at the end
+        caretPosition_ = nbCdpt;
+    } else {
+        // Clicked in the text so computes what exact letter
+        std::string tmpText;
+        std::string::iterator b = text_.getText().begin();
+        std::string::iterator e = text_.getText().end();
+
+        size_t currentPos = 0;
+        while ( b != e ) {
+            try {
+                auto codePoint = utf8::next(b,e);
+                utf8::append(codePoint, tmpText);
+
+                if (point.x < getX() + text_.getFont()->textWidth(tmpText)) {
+                    caretPosition_ = currentPos;
+                    break;
+                }
+                currentPos++;
+            } catch (const utf8::invalid_utf8& exc) {
+                LOG(Log::k_FLG_IO, "Option", "Option", ("Invalid utf8 character in %s", text_.getText().c_str()));
+                continue;
+            }
+        }
+    }
+}
+
+void TextField::setText(const char* text) {
+    // don't allow resolve in case user has enter "#" in the text
+    text_.setText(text, false);
+}
+
+void TextField::drawCaret() {
+    int caretLength = 10; // 10 pixels by default
+    std::string tmpText;
+    std::string::iterator b = text_.getText().begin();
+    std::string::iterator e = text_.getText().end();
+
+    size_t currentPos = 0;
+    // Get all characters before the caret
+    while ( b != e ) {
+        try {
+            if (currentPos == caretPosition_) {
+                break;
+            }
+
+            auto codePoint = utf8::next(b,e);
+            utf8::append(codePoint, tmpText);
+            currentPos++;
+
+        } catch (const utf8::invalid_utf8& exc) {
+            LOG(Log::k_FLG_IO, "Option", "Option", ("Invalid utf8 character in %s", text_.getText().c_str()));
+            continue;
+        }
+    }
+
+    // Find the width in pixel of all the text before the caret
+    // this will give the starting point of the caret
+    caretScreenPos_.x = getX() + text_.getFont()->textWidth(tmpText) + 1;
+    tmpText.erase();
+
+    // width of caret is the same of the letter above
+    if (b != e) {
+        auto codePoint = utf8::next(b,e);
+        utf8::append(codePoint, tmpText);
+        caretLength = text_.getFont()->textWidth(tmpText);
+    }
+
+    // Draw caret
+    g_System.drawFillRect(caretScreenPos_, caretLength, 2, caretColor_);
+}
+
+}

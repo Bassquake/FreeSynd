@@ -1,0 +1,73 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2015, 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#include "listmissionmenu.h"
+
+#include "fs-engine/menus/menumanager.h"
+#include "fs-engine/system/system.h"
+
+#include "editormenuid.h"
+#include "editorapp.h"
+
+using fs_eng::MenuManager;
+using fs_eng::Menu;
+using fs_eng::FontManager;
+
+ListMissionMenu::ListMissionMenu(MenuManager * m):
+    Menu(m, fs_edit_menus::kMenuIdListMis, fs_edit_menus::kMenuIdSrchMis)
+{
+    isCachable_ = false;
+    cursorOnShow_ = kMenuCursor;
+    addStatic(0, 40, fs_eng::kScreenWidth, "MISSIONS FOUND", FontManager::SIZE_4, false);
+
+    // Display list of missions found in search menu
+    int nbRes = 0;
+    int x = 20;
+    int y, topY = 100;
+
+    for (std::list < int >::iterator it = g_editorCtrl.getMissionResultList().begin();
+         it != g_editorCtrl.getMissionResultList().end(); it++) {
+
+             int missionId = *it;
+             char label[50];
+
+             if (missionId < 10) {
+                sprintf(label, "#CNTRY_0%d", missionId);
+             } else {
+                sprintf(label, "#CNTRY_%d", missionId);
+             }
+
+             if (nbRes % 10 == 0) {
+                y = topY;
+                x += (nbRes == 0 ? 0 : 130);
+             } else {
+                 y += 25;
+             }
+             addOption(x, y, 130, 25, label, FontManager::SIZE_2, fs_edit_menus::kMenuIdSrchMis);
+             nbRes++;
+    }
+
+    // Back button
+    addOption(17, 347, 128, 25, "BACK", FontManager::SIZE_2, fs_edit_menus::kMenuIdSrchMis);
+}
+

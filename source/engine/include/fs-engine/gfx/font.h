@@ -1,0 +1,124 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2011  Joey Parrish  <joey.parrish@gmail.com>
+ *   Copyright (C) 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#ifndef FONT_H
+#define FONT_H
+
+#include <map>
+#include "utf8.h"
+
+#include "fs-utils/common.h"
+#include "spritemanager.h"
+
+namespace fs_eng {
+
+/*!
+ * Font range description for 8-bit character sets.
+ */
+class FontRange {
+public:
+    FontRange(const std::string& valid_chars);
+
+    inline bool in_range(fs_utl::cp437char_t c) {
+        return (char_present_[c / 32] & (1 << (c % 32))) != 0;
+    }
+
+private:
+    uint32_t char_present_[8]; // 256 bits
+};
+
+/*!
+ * Font class.
+ */
+class Font {
+public:
+    Font(SpriteManager *sprites, int offset, char base,
+            const std::string& valid_chars);
+    virtual ~Font() {}
+
+    // Set a new palette for this font
+    bool setPalette(const fs_eng::Palette &newPalette);
+
+    //! Draw a utf-8 string with this font.
+    void drawText(int x, int y, const std::string& text, bool x2);
+    //! Return the width in pixels of the rendered text
+    int textWidth(const std::string& text, bool x2 = true);
+    //! Return the height in pixels of the rendered text
+    int textHeight(bool x2 = true);
+
+    //! returns true if given code point is printable with the font
+    bool isPrintable(utf8::utfchar32_t codePoint);
+
+protected:
+    //! Returns the sprite for the given unicode
+    Sprite *getSpriteForCodepoint(utf8::utfchar32_t codePoint);
+
+protected:
+    SpriteManager *sprites_;
+    int offset_;
+    FontRange range_;
+    //! The default width for this font
+    int defaultWidth_;
+    //! The default height for this font
+    int defaultHeight_;
+};
+
+/*!
+ * Font used in menu and widget. Text can be highlighted or dark.
+ * Text can be in UTF-8 or Cp437.
+ */
+class MenuFont : public Font {
+public:
+    MenuFont(SpriteManager *sprites, int darkOffset, int lightOffset, char base,
+            const std::string& valid_chars);
+
+    //! draws a UTF-8 text at the given position
+    void drawText(int x, int y, const std::string& text, bool lighted, bool x2 = true);
+
+protected:
+    //! returns the sprite which can be highlighted or not
+    Sprite *getSpriteForCodepoint(utf8::utfchar32_t codePoint, bool highlighted);
+
+protected:
+    int lightOffset_;
+};
+
+/*!
+ * GameFont is the font used during gameplay (for displaying hints).
+ * It uses the same sprites as the menu fonts but only in size 3 and it
+ * changes its color to a specified color.
+ * It uses only UTF-8 text in input.
+ */
+class GameFont : public Font {
+public:
+    GameFont(SpriteManager *sprites, int offset, char base,
+            const std::string& valid_chars);
+
+    //! draw a UTF-8 text at the given position with the given color
+    void drawText(int x, int y, const std::string& text, fs_eng::FSColor toColor);
+};
+
+}
+
+#endif

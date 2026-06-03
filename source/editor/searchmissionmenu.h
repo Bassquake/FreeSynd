@@ -1,0 +1,91 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2015, 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#ifndef SEARCHMISSIONMENU_H_
+#define SEARCHMISSIONMENU_H_
+
+#include "fs-utils/misc/seqmodel.h"
+#include "fs-engine/menus/menu.h"
+#include "fs-kernel/model/ped.h"
+
+class PedTypeAdapter {
+public:
+    PedTypeAdapter(fs_knl::PedInstance::PedType type) {
+        type_ = type;
+    }
+
+    fs_knl::PedInstance::PedType getType() { return type_; }
+    std::string getName();
+
+private:
+fs_knl::PedInstance::PedType type_;
+};
+
+class VehicleTypeAdapter {
+public:
+    VehicleTypeAdapter(uint8 type) {
+        type_ = type;
+    }
+
+    uint8 getType() { return type_; }
+    std::string getName();
+
+private:
+    uint8 type_;
+};
+
+/*!
+ * Search mission menu.
+ */
+class SearchMissionMenu : public fs_eng::Menu {
+public:
+    SearchMissionMenu(fs_eng::MenuManager *m);
+    ~SearchMissionMenu();
+
+    bool handleBeforeShow() override;
+    void handleAction(const ActionDesc &action) override;
+
+protected:
+    void initPedTypeListAndWidget();
+    void initSearchCriterias();
+    void initVehicleTypeListAndWidget();
+
+    bool matchMissionWithPedType(fs_knl::Mission *pMission);
+    bool matchMissionWithVehicleType(fs_knl::Mission *pMission);
+
+protected:
+    int searchButId_;
+    fs_eng::ListBox *pPedTypeListBox_;
+    fs_eng::ListBox *pVehicleTypeListBox_;
+
+    VectorModel<PedTypeAdapter *> pedTypeList_;
+    VectorModel<VehicleTypeAdapter *> vehicleTypeList_;
+
+    bool searchOnPedType_;
+    fs_knl::PedInstance::PedType pedTypeCriteria_;
+
+    bool searchOnVehicleType_;
+    uint8 vehicleTypeCriteria_;
+};
+
+#endif // SEARCHMISSIONMENU_H_

@@ -1,0 +1,15 @@
+.vs
+_deps
+CMakeFiles
+data
+docs
+engine
+game
+kernel
+packaging
+Release
+utils
+Win32
+x64
+CMakeDoxyfile.in
+CMakeCache.txt

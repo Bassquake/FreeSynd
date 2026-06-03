@@ -1,0 +1,217 @@
+{
+    "version": 8,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 28,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "description": "For more information: https://github.com/esweet431/box2d-lite/blob/vs-launch/CMakePresets.json",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/inst/${presetName}",
+            "cacheVariables": {
+                "USE_SYSTEM_SDL": "ON",
+                "USE_SDL_MIXER": "ON",
+                "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "cmake/conan_provider.cmake"
+            }
+        },
+        {
+            "name": "x86-debug",
+            "displayName": "x86 Debug",
+            "description": "Sets debug build type and x86 arch",
+            "inherits": "base",
+            "hidden": true,
+            "architecture": {
+                "value": "x86",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "FREESYND_ARCH": "x86"
+            }
+        },
+        {
+            "name": "x86-release",
+            "displayName": "x86 Release",
+            "description": "Sets release build type",
+            "inherits": "x86-debug",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "x64-debug",
+            "displayName": "x64 Debug",
+            "description": "Sets debug build type and x86 arch",
+            "inherits": "x86-debug",
+            "hidden": true,
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "FREESYND_ARCH": "x64"
+            }
+        },
+        {
+            "name": "x64-release",
+            "displayName": "x64 Release",
+            "description": "Sets release build type",
+            "inherits": "x64-debug",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "ninja-linux-x86-debug",
+            "displayName": "ninja-linux-x86-debug",
+            "description": "Ninja with Debug configuration",
+            "hidden": false,
+            "inherits": "x86-debug"
+        },
+        {
+            "name": "ninja-linux-x86-release",
+            "displayName": "ninja-linux-x86-release",
+            "description": "Single configuration Release",
+            "hidden": false,
+            "inherits": "x86-release",
+            "installDir": "/usr/local"
+        },
+        {
+            "name": "ninja-linux-x64-debug",
+            "displayName": "ninja-linux-x64-debug",
+            "description": "Ninja with Debug configuration",
+            "hidden": false,
+            "inherits": "x64-debug"
+        },
+        {
+            "name": "ninja-linux-x64-release",
+            "displayName": "ninja-linux-x64-release",
+            "description": "Single configuration Release",
+            "hidden": false,
+            "inherits": "x64-release",
+            "installDir": "/usr/local"
+        },
+        {
+            "name": "ninja-msvc-x86-debug",
+            "displayName": "Ninja x86_msvc-Debug",
+            "description": "Ninja with Microsoft C++ compiler - Debug",
+            "hidden": false,
+            "inherits": "x86-debug",
+	        "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "cl.exe"
+            }
+        },
+        {
+            "name": "ninja-msvc-x86-release",
+            "displayName": "Ninja x86_msvc-Release",
+            "description": "Ninja with Microsoft C++ compiler - Release",
+            "hidden": false,
+            "inherits": "x86-release",
+	        "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "cl.exe"
+            }
+        },
+	    {
+            "name": "ninja-msvc-x64-debug",
+            "displayName": "Ninja x64_msvc-Debug",
+            "description": "Ninja with Microsoft C++ compiler - Debug",
+            "hidden": false,
+            "inherits": "x64-debug",
+	        "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "cl.exe"
+            }
+        },
+        {
+            "name": "ninja-msvc-x64-release",
+            "displayName": "Ninja x64_msvc-Release",
+            "description": "Ninja with Microsoft C++ compiler - Release",
+            "hidden": false,
+            "inherits": "x64-release",
+	        "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "cl.exe"
+            }
+        },
+        {
+          "name": "ninja-clang-arm64-debug",
+          "displayName": "ninja-clang-arm64-debug",
+          "description": "Visual Studio Code on Mac with Clang compiler - Debug",
+          "inherits": "base",
+          "cacheVariables": {
+              "CMAKE_CXX_COMPILER": "/usr/bin/clang++",
+              "CMAKE_BUILD_TYPE": "Debug"
+          }
+        },
+        {
+            "name": "ninja-clang-arm64-release",
+            "displayName": "ninja-clang-arm64-release",
+            "description": "Visual Studio Code on Mac with Clang compiler - Debug",
+            "inherits": "ninja-clang-arm64-debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "build-gcc-x86-debug",
+            "displayName": "Build GCC x86 Debug",
+            "configurePreset": "ninja-linux-x86-debug"
+        },
+        {
+            "name": "build-gcc-x86-release",
+            "displayName": "Build GCC x86 Release",
+            "configurePreset": "ninja-linux-x86-release"
+        },
+        {
+            "name": "build-gcc-x64-debug",
+            "displayName": "Build GCC x64 Debug",
+            "configurePreset": "ninja-linux-x64-debug"
+        },
+        {
+            "name": "build-gcc-x64-release",
+            "displayName": "Build GCC x64 Release",
+            "configurePreset": "ninja-linux-x64-release"
+        },
+        {
+            "name": "build-ninja-msvc-x86-debug",
+            "displayName": "Build MSVC x86 Debug",
+            "configurePreset": "ninja-msvc-x86-debug"
+        },
+        {
+            "name": "build-ninja-msvc-x86-release",
+            "displayName": "Build MSVC x86 Release",
+            "configurePreset": "ninja-msvc-x86-release",
+            "configuration": "Release"
+        },
+        {
+            "name": "build-ninja-msvc-x64-debug",
+            "displayName": "Build MSVC x64 Debug",
+            "configurePreset": "ninja-msvc-x64-debug"
+        },
+        {
+            "name": "build-ninja-msvc-x64-release",
+            "displayName": "Build MSVC x64 Release",
+            "configurePreset": "ninja-msvc-x64-release",
+            "configuration": "Release"
+        },
+        {
+          "name": "build-ninja-x86-arm64-debug",
+          "displayName": "Build Ninja arm64 Debug",
+          "configurePreset": "ninja-clang-arm64-debug"
+        },
+        {
+            "name": "build-ninja-x86-arm64-release",
+            "displayName": "Build Ninja arm64 Release",
+            "configurePreset": "ninja-clang-arm64-release",
+            "configuration": "Release"
+        }
+    ]
+}

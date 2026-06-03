@@ -1,0 +1,55 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2013, 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+
+#include "mainmenu.h"
+
+#include "fs-engine/menus/menumanager.h"
+#include "fs-engine/system/system.h"
+
+#include "editormenuid.h"
+
+using fs_eng::MenuManager;
+using fs_eng::Menu;
+using fs_eng::FontManager;
+
+MainMenu::MainMenu(MenuManager * m):Menu(m, fs_edit_menus::kMenuIdMain, fs_edit_menus::kMenuIdMain)
+{
+    isCachable_ = false;
+    cursorOnShow_ = kMenuCursor;
+    addStatic(0, 40, fs_eng::kScreenWidth, "GAME EDITOR", FontManager::SIZE_4, false);
+
+    addStatic(201, 130, 100, "GRAPHICS", FontManager::SIZE_3, false);
+    addOption(201, 155, 130, 25, "- MENU SPRITES", FontManager::SIZE_2, fs_edit_menus::kMenuIdFont, true, false);
+    addOption(201, 180, 130, 25, "- ANIMATIONS", FontManager::SIZE_2, fs_edit_menus::kMenuIdAnim, true, false);
+    addOption(201, 205, 130, 25, "- AUDIO", FontManager::SIZE_2, fs_edit_menus::kMenuIdAudio, true, false);
+
+    addStatic(201, 235, 100, "MISSIONS", FontManager::SIZE_3, false);
+    addOption(210, 260, 130, 25, "- SEARCH", FontManager::SIZE_2, fs_edit_menus::kMenuIdSrchMis, true, false);
+    quitButId_ = addOption(201, 300, 300, 25, "#MAIN_QUIT", FontManager::SIZE_3, kMenuIdNoMenu, true, false);
+}
+
+void MainMenu::handleAction(const ActionDesc &action)
+{
+    if (action.id == quitButId_)
+        menu_manager_->gotoMenu(Menu::kMenuIdLogout);
+}

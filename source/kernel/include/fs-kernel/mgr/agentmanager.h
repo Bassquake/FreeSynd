@@ -1,0 +1,131 @@
+/*
+ *  FreeSynd - a remake of the classic Bullfrog game "Syndicate".
+ *
+ *   Copyright (C) 2005  Stuart Binge  <skbinge@gmail.com>
+ *   Copyright (C) 2005  Joost Peters  <joostp@users.sourceforge.net>
+ *   Copyright (C) 2006  Trent Waddington <qg@biodome.org>
+ *   Copyright (C) 2006  Tarjei Knapstad <tarjei.knapstad@gmail.com>
+ *   Copyright (C) 2011  Joey Parrish  <joey.parrish@gmail.com>
+ *   Copyright (C) 2024-2025  Benoit Blancard <benblan@users.sourceforge.net>
+ *
+ *   This program is free software: you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as 
+ *  published by the Free Software Foundation, either version 3 of the
+ *  License, or (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *  See the GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>. 
+ * 
+ */
+#ifndef AGENTMANAGER_H
+#define AGENTMANAGER_H
+
+#include "fs-utils/common.h"
+#include "fs-utils/misc/seqmodel.h"
+#include "fs-utils/io/portablefile.h"
+#include "fs-utils/misc/singleton.h"
+#include "fs-kernel/model/agent.h"
+#include "fs-kernel/model/squad.h"
+
+namespace fs_knl {
+
+extern const char * const g_AgentNames[];
+extern const int g_NumAgentNames;
+
+class WeaponManager;
+class ModManager;
+
+/*!
+ * Agent Manager class.
+ *
+ * Provides methods for managing player's agents and squad.
+ * The Squad is the team of agent selected for a mission. It holds up to 4 agents.
+ * An agent can be selected for a squad but not active : in this case, he will not
+ * participate
+ */
+class AgentManager : public Singleton < AgentManager > {
+public:
+    /*! Max number of agents in cryo chamber.*/
+    static const int MAX_AGENT;
+
+    AgentManager();
+    ~AgentManager() {}
+
+    void destroy();
+
+    void setWeaponManager(WeaponManager *pWeaponManager) {
+        pWeaponManager_ = pWeaponManager;
+    }
+
+    void setModManager(ModManager *pModManager) {
+        pModManager_ = pModManager;
+    }
+
+    void loadAgents();
+    void reset(bool onlyWomen = false);
+    //! Destroy an agent from squad and cryo chamber
+    void destroyAgentSlot(size_t squadSlot);
+
+    Agent *agent(uint8_t n) {
+        assert(n < MAX_AGENT);
+        return agents_.get(n);
+    }
+
+    SequenceModel * getAgents() { return &agents_; }
+
+    //! Empties the squad
+    void clearSquad();
+
+    //! Returns true if the squad slot holds an agent and if he's active
+    bool isSquadSlotActive(size_t slotId);
+
+    /*!
+     * Sets an agent in the squad at the given index.
+     * \param n The agent's index in the team (from 0 to 3)
+     * \param a The new agent
+     */
+    void setSquadMember(size_t slotId, Agent *pAgent) {
+        assert(slotId < Squad::kMaxSlot);
+        a_squad_[slotId] = pAgent;
+    }
+
+    //! Returns the agent on the given squad slot
+    Agent * squadMember(size_t slotId) {
+        assert(slotId < Squad::kMaxSlot);
+        return a_squad_[slotId];
+    }
+
+    //! Return the slot that holds the given agent or Squad::kMaxSlot if no agent is found
+    size_t getSquadSlotForAgent(Agent *pAgent);
+
+    //! Save instance to file
+    bool saveToFile(fs_utl::PortableFile &file);
+    //! Load instance from file
+    bool loadFromFile(fs_utl::PortableFile &infile, const fs_utl::FormatVersion& v);
+    Agent *createAgent(bool onlyWomen = false);
+
+protected:
+    /*!
+     * All available agents.
+     */
+    VectorModel<Agent *> agents_;
+    /*!
+     * Selected agents for the next mission. Up to 4 agents.
+     */
+    Agent *a_squad_[4];
+    int nextName_;
+    //! The weapon manager
+    WeaponManager *pWeaponManager_;
+    //! The mod manager
+    ModManager *pModManager_;
+};
+
+}
+#define g_agentMgr    fs_knl::AgentManager::singleton()
+
+#endif
